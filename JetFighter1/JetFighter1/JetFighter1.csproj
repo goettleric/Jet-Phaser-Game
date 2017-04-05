@@ -24,9 +24,9 @@
   <ItemGroup>
     <Content Include="build\assets\pics\background2.png" />
     <Content Include="build\assets\sounds\aircraft009.mp3" />
+    <Content Include="build\assets\sprites\level01-sprites.png" />
     <Content Include="build\assets\ui\titlePage.png" />
     <Content Include="build\styles\default.css" />
-    <Content Include="build\assets\sprites\level01-sprites.png" />
     <Content Include="build\assets\ui\gameLogo.png" />
     <Content Include="build\game.js" />
     <Content Include="build\index.html" />
@@ -39,7 +39,6 @@
   <ItemGroup>
     <Content Include="build\game.js.map" />
     <Content Include="build\assets\sounds\click.ogg" />
-    <Content Include="build\assets\sprites\level01-sprites.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\utils\" />
@@ -56,6 +55,7 @@
     <TypeScriptCompile Include="tsDefinitions\pixi.comments.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build\assets\sprites\level01-sprites.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

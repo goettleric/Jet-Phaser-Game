@@ -63,20 +63,6 @@ var JetFighter;
                         this.scale.x = -1;
                     }
                 }
-                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                    this.body.velocity.y = -50;
-                    this.animations.play('fly');
-                    if (this.scale.y === -1) {
-                        this.scale.y = 1;
-                    }
-                }
-                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-                    this.body.velocity.y = 50;
-                    this.animations.play('fly');
-                    if (this.scale.y === 1) {
-                        this.scale.y = -1;
-                    }
-                }
                 else {
                     this.animations.frame = 0;
                 }
