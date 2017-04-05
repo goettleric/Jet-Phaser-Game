@@ -1,0 +1,17 @@
+﻿body {
+    background-color: #ffffff;
+    background-image: url(../assets/pics/background2.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+content {
+    position: relative;
+    margin:auto;
+    margin-top: 4rem;
+
+}
+span {
+    font-style: italic;
+}

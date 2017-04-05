@@ -1,0 +1,6 @@
+C:\Users\Eric\AppData\Local\Temporary Projects\JetFighter\bin\JetFighter.dll.config
+C:\Users\Eric\AppData\Local\Temporary Projects\JetFighter\bin\JetFighter.dll
+C:\Users\Eric\AppData\Local\Temporary Projects\JetFighter\bin\JetFighter.pdb
+C:\Users\Eric\AppData\Local\Temporary Projects\JetFighter\obj\Debug\JetFighter.csprojResolveAssemblyReference.cache
+C:\Users\Eric\AppData\Local\Temporary Projects\JetFighter\obj\Debug\JetFighter.dll
+C:\Users\Eric\AppData\Local\Temporary Projects\JetFighter\obj\Debug\JetFighter.pdb
