@@ -13,10 +13,11 @@
             this.load.image('logo', './assets/ui/gameLogo.png');
             this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
 
-            this.load.atlasJSONHash('level01-sprites', './assets/sprites/level01-sprites.png', './assets/sprites/level01-sprites.json');
+            this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         }
 
         create() {
+            //this.game.add.sprite(0, 0, 'jet1');
             var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000,
                 Phaser.Easing.Linear.None, true);
             tween.onComplete.add(this.startMainMenu, this);

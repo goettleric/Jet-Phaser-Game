@@ -1,0 +1,60 @@
+{"frames": {
+
+"jet1":
+{
+	"frame": {"x":1,"y":1,"w":48,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":24,"w":48,"h":66},
+	"sourceSize": {"w":71,"h":90}
+},
+"jetLeft2":
+{
+	"frame": {"x":51,"y":1,"w":37,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":37,"h":68},
+	"sourceSize": {"w":46,"h":72}
+},
+"jetLeft3":
+{
+	"frame": {"x":90,"y":1,"w":18,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":2,"w":18,"h":69},
+	"sourceSize": {"w":55,"h":71}
+},
+"jetRight2":
+{
+	"frame": {"x":110,"y":1,"w":38,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":21,"w":38,"h":69},
+	"sourceSize": {"w":71,"h":90}
+},
+"jetRight3":
+{
+	"frame": {"x":150,"y":1,"w":16,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":3,"w":16,"h":66},
+	"sourceSize": {"w":55,"h":71}
+},
+"skygrad":
+{
+	"frame": {"x":168,"y":1,"w":1240,"h":867},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1240,"h":867},
+	"sourceSize": {"w":1240,"h":867}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "jetfighter.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:682a48bd2a112c184a90ef8705234f5a:5c714dc439441d7c89745f78910e8687:0b43cb9384a0adadab1812788b63cd11$"
+}
+}

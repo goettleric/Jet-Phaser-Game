@@ -38,9 +38,10 @@ var JetFighter;
         var Player = (function (_super) {
             __extends(Player, _super);
             function Player(game, x, y) {
-                var _this = _super.call(this, game, x, y, 'level01-sprites', 1) || this;
+                var _this = _super.call(this, game, x, game.stage.height, 'jetfighter', 'jetLeft2') || this;
                 _this.anchor.setTo(0.5);
-                _this.animations.add('fly', [0, 1], 5, true);
+                _this.animations.add('bankright', ['jetRight2', 'jetRight3'], .01, false);
+                _this.animations.add('bankleft', ['jetLeft2', 'jetLeft3'], .01, false);
                 game.add.existing(_this);
                 game.physics.enable(_this);
                 _this.body.collideWorldBounds = true;
@@ -50,18 +51,12 @@ var JetFighter;
             Player.prototype.update = function () {
                 this.body.velocity.x = 0;
                 if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-                    this.body.velocity.x = -50;
-                    this.animations.play('fly');
-                    if (this.scale.x === -1) {
-                        this.scale.x = 1;
-                    }
+                    this.body.velocity.x = -250;
+                    this.animations.play('bankleft');
                 }
                 else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-                    this.body.velocity.x = 50;
-                    this.animations.play('fly');
-                    if (this.scale.x === 1) {
-                        this.scale.x = -1;
-                    }
+                    this.body.velocity.x = 250;
+                    this.animations.play('bankright');
                 }
                 else {
                     this.animations.frame = 0;
@@ -117,7 +112,7 @@ var JetFighter;
             }
             Level01.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
-                this.background = this.add.sprite(0, 0, 'level01-sprites', 'background');
+                this.background = this.add.sprite(0, 0, 'jetfighter', 'skygrad');
                 this.player = new Client.Player(this.game, this.world.centerX, this.world.centerX);
                 this.player.anchor.setTo(0, 5);
                 this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
@@ -175,9 +170,10 @@ var JetFighter;
                 this.load.image('titlepage', './assets/ui/titlePage.png');
                 this.load.image('logo', './assets/ui/gameLogo.png');
                 this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
-                this.load.atlasJSONHash('level01-sprites', './assets/sprites/level01-sprites.png', './assets/sprites/level01-sprites.json');
+                this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
             };
             Preloader.prototype.create = function () {
+                this.game.add.sprite(0, 0, 'jet1');
                 var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
                 tween.onComplete.add(this.startMainMenu, this);
             };
