@@ -1,13 +1,8 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var JetFighter;
 (function (JetFighter) {
     var Client;
@@ -51,23 +46,22 @@ var JetFighter;
             }
             Player.prototype.update = function () {
                 this.body.velocity.x = 0;
-                if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+                if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                     this.body.velocity.x = -250;
                     this.animations.play('bankleft');
                 }
-                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                     this.body.velocity.x = 250;
                     this.animations.play('bankright');
                 }
-                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
+                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
                     this.body.velocity.y = 250;
                 }
-                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
+                else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
                     this.body.velocity.y = -250;
                 }
                 else {
-                    this.body.velocity.x = 0;
-                    this.body.velocity.y = 0;
+                    this.body.velocity.setTo(0, 0);
                     this.animations.play('straight');
                 }
             };
@@ -120,12 +114,21 @@ var JetFighter;
                 return _super !== null && _super.apply(this, arguments) || this;
             }
             Level01.prototype.create = function () {
+                var enemies;
+                enemies = this.game.add.group();
                 this.physics.startSystem(Phaser.Physics.ARCADE);
-                this.background = this.add.sprite(0, 0, 'jetfighter', 'skygrad');
-                this.player = new Client.Player(this.game, this.world.centerX, this.world.centerX);
+                this.background = this.add.sprite(0, 0, 'jetfighter', 'background');
+                this.player = new Client.Player(this.game, this.world.centerX, this.world.centerY * 2.5);
                 this.player.anchor.setTo(0, 5);
+                this.game.time.events.repeat(Phaser.Timer.SECOND * 10, 10, this.createEnemy, this);
                 this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
             };
+            Level01.prototype.update = function () {
+            };
+            Level01.prototype.createEnemy = function () {
+                this.enemy = new Client.EnemyFighterType1(this.game, this.world.randomX, this.world.y - 200);
+            };
+            ;
             return Level01;
         }(Phaser.State));
         Client.Level01 = Level01;
@@ -191,6 +194,32 @@ var JetFighter;
             return Preloader;
         }(Phaser.State));
         Client.Preloader = Preloader;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var EnemyFighterType1 = (function (_super) {
+            __extends(EnemyFighterType1, _super);
+            function EnemyFighterType1(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'jetfighter', 'enemy1') || this;
+                _this.anchor.setTo(0.5);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(20);
+                return _this;
+            }
+            EnemyFighterType1.prototype.update = function () {
+                this.body.velocity.y = 70;
+                if (this.inWorld) {
+                    this.destroy;
+                }
+            };
+            return EnemyFighterType1;
+        }(Phaser.Sprite));
+        Client.EnemyFighterType1 = EnemyFighterType1;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
 //# sourceMappingURL=game.js.map

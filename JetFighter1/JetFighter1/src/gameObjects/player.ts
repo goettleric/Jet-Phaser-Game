@@ -19,27 +19,26 @@
         update() {
             this.body.velocity.x = 0;
             //Keyboard Controlls and Animations
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
                 this.body.velocity.x = -250;
                 this.animations.play('bankleft');
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
                 this.body.velocity.x = 250;
-                this.animations.play('bankright');  
+                this.animations.play('bankright');
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.S)) {
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
                 this.body.velocity.y = 250;
             }
-            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.W)) {
+            else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
                 this.body.velocity.y = -250;
-            }
-            else {
-                this.body.velocity.x = 0;
-                this.body.velocity.y = 0;
+            } else {
+                this.body.velocity.setTo(0, 0);
                 this.animations.play('straight');
             }
+                
+            
         }
 
     }
-
 }

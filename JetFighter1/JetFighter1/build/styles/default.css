@@ -1,4 +1,5 @@
 ﻿body {
+    margin:auto;
     background-color: #ffffff;
     background-image: url(../assets/pics/background2.png);
     background-repeat: no-repeat;
@@ -8,8 +9,8 @@
 
 content {
     position: relative;
-    margin:auto;
-    margin-top: 4rem;
+    
+    margin-top: 20rem;
 
 }
 span {
