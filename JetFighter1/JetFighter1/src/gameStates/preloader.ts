@@ -17,7 +17,6 @@
         }
 
         create() {
-            //this.game.add.sprite(0, 0, 'jet1');
             var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000,
                 Phaser.Easing.Linear.None, true);
             tween.onComplete.add(this.startMainMenu, this);

@@ -9,16 +9,15 @@
             game.add.existing(this);
             // Physics
             game.physics.enable(this);
+            game.physics.arcade.enable(this);
+
             this.body.collideWorldBounds = false;
             this.body.setCircle(20);
         }
 
         update() {
             this.body.velocity.y = 70;
-            if (this.inWorld) {
-
-                this.destroy;
-            }
+            this.outOfBoundsKill;
         }
 
     }

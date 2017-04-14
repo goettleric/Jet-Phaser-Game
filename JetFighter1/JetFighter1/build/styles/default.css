@@ -4,14 +4,39 @@
     background-image: url(../assets/pics/background2.png);
     background-repeat: no-repeat;
     background-size:cover;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    letter-spacing: 2px;
 }
 
+nav {
+    width: 50rem;
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+nav li {
+    display: inline-block;
+    width: 10rem;
+    margin:auto;
+    text-align:center;
+    border: 1px solid black;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 1);
+}
+
+nav a {
+    text-align:center;
+    text-decoration: none;
+    color: red;
+    
+}
 content {
     position: relative;
-    
-    margin-top: 20rem;
-
+    top: 24rem;
+    border: 4px groove black;
 }
 span {
     font-style: italic;

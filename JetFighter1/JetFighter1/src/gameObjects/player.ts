@@ -17,6 +17,8 @@
         }
 
         update() {
+
+            //Player movement
             this.body.velocity.x = 0;
             //Keyboard Controlls and Animations
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
@@ -36,9 +38,10 @@
                 this.body.velocity.setTo(0, 0);
                 this.animations.play('straight');
             }
-                
-            
+
         }
+
+    
 
     }
 }

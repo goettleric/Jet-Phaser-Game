@@ -30,6 +30,31 @@ var JetFighter;
 (function (JetFighter) {
     var Client;
     (function (Client) {
+        var EnemyFighterType1 = (function (_super) {
+            __extends(EnemyFighterType1, _super);
+            function EnemyFighterType1(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'jetfighter', 'enemy1') || this;
+                _this.anchor.setTo(0.5);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(20);
+                return _this;
+            }
+            EnemyFighterType1.prototype.update = function () {
+                this.body.velocity.y = 70;
+                this.outOfBoundsKill;
+            };
+            return EnemyFighterType1;
+        }(Phaser.Sprite));
+        Client.EnemyFighterType1 = EnemyFighterType1;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
         var Player = (function (_super) {
             __extends(Player, _super);
             function Player(game, x, y) {
@@ -114,21 +139,27 @@ var JetFighter;
                 return _super !== null && _super.apply(this, arguments) || this;
             }
             Level01.prototype.create = function () {
-                var enemies;
-                enemies = this.game.add.group();
                 this.physics.startSystem(Phaser.Physics.ARCADE);
                 this.background = this.add.sprite(0, 0, 'jetfighter', 'background');
+                this.enemies = this.game.add.group();
+                this.enemies.enableBody = true;
+                this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
                 this.player = new Client.Player(this.game, this.world.centerX, this.world.centerY * 2.5);
                 this.player.anchor.setTo(0, 5);
                 this.game.time.events.repeat(Phaser.Timer.SECOND * 10, 10, this.createEnemy, this);
-                this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
+                this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
             };
             Level01.prototype.update = function () {
+                this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
             };
             Level01.prototype.createEnemy = function () {
                 this.enemy = new Client.EnemyFighterType1(this.game, this.world.randomX, this.world.y - 200);
+                this.enemies.add(this.enemy);
             };
-            ;
+            Level01.prototype.planeCollision = function (player, enemy) {
+                enemy.kill();
+                player.kill();
+            };
             return Level01;
         }(Phaser.State));
         Client.Level01 = Level01;
@@ -194,32 +225,6 @@ var JetFighter;
             return Preloader;
         }(Phaser.State));
         Client.Preloader = Preloader;
-    })(Client = JetFighter.Client || (JetFighter.Client = {}));
-})(JetFighter || (JetFighter = {}));
-var JetFighter;
-(function (JetFighter) {
-    var Client;
-    (function (Client) {
-        var EnemyFighterType1 = (function (_super) {
-            __extends(EnemyFighterType1, _super);
-            function EnemyFighterType1(game, x, y) {
-                var _this = _super.call(this, game, x, y, 'jetfighter', 'enemy1') || this;
-                _this.anchor.setTo(0.5);
-                game.add.existing(_this);
-                game.physics.enable(_this);
-                _this.body.collideWorldBounds = false;
-                _this.body.setCircle(20);
-                return _this;
-            }
-            EnemyFighterType1.prototype.update = function () {
-                this.body.velocity.y = 70;
-                if (this.inWorld) {
-                    this.destroy;
-                }
-            };
-            return EnemyFighterType1;
-        }(Phaser.Sprite));
-        Client.EnemyFighterType1 = EnemyFighterType1;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
 //# sourceMappingURL=game.js.map
