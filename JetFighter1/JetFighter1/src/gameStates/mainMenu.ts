@@ -21,7 +21,7 @@
         }
 
         fadeOut() {
-            this.add.audio('click', 1, false).play();
+            this.add.audio('click', 10, false).play();
             this.add.tween(this.background).to({ alpha: 0 }, 4000, Phaser.Easing.Linear.None, true);
             var tween = this.add.tween(this.logo).to({ y: 1200 }, 4000, Phaser.Easing.Linear.None, true);
             tween.onComplete.add(this.startGame, this);

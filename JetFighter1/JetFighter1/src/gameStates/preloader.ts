@@ -12,7 +12,7 @@
             this.load.image('titlepage', './assets/ui/titlePage.png');
             this.load.image('logo', './assets/ui/gameLogo.png');
             this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
-
+            this.load.audio('miniGun', './assets/sounds/gunShot.mp3', true);
             this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         }
 

@@ -3,6 +3,7 @@
     export class Player extends Phaser.Sprite {
 
         constructor(game: Phaser.Game, x: number, y: number) {
+            //Set the player sprite and anchor point
             super(game, x, y, 'jetfighter', 'jet1');
             this.anchor.setTo(0.5);
             //Animations
@@ -34,7 +35,9 @@
             }
             else if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
                 this.body.velocity.y = -250;
-            } else {
+            }
+            
+            else {
                 this.body.velocity.setTo(0, 0);
                 this.animations.play('straight');
             }

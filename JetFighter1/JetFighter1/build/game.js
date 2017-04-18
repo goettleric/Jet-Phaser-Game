@@ -99,6 +99,30 @@ var JetFighter;
 (function (JetFighter) {
     var Client;
     (function (Client) {
+        var PlayerBullet = (function (_super) {
+            __extends(PlayerBullet, _super);
+            function PlayerBullet(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'jetfighter', 'playerBullet') || this;
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(5);
+                return _this;
+            }
+            PlayerBullet.prototype.update = function () {
+                this.body.velocity.y = -600;
+                this.outOfBoundsKill;
+            };
+            return PlayerBullet;
+        }(Phaser.Sprite));
+        Client.PlayerBullet = PlayerBullet;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
         var Boot = (function (_super) {
             __extends(Boot, _super);
             function Boot() {
@@ -146,10 +170,16 @@ var JetFighter;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
                 this.player = new Client.Player(this.game, this.world.centerX, this.world.centerY * 2.5);
                 this.player.anchor.setTo(0, 5);
+                this.bullets = this.game.add.group();
+                this.bullets.enableBody = true;
+                this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
                 this.game.time.events.repeat(Phaser.Timer.SECOND * 10, 10, this.createEnemy, this);
                 this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
             };
             Level01.prototype.update = function () {
+                if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+                    this.shootBullet();
+                }
                 this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
             };
             Level01.prototype.createEnemy = function () {
@@ -159,6 +189,11 @@ var JetFighter;
             Level01.prototype.planeCollision = function (player, enemy) {
                 enemy.kill();
                 player.kill();
+            };
+            Level01.prototype.shootBullet = function () {
+                this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340);
+                this.bullets.add(this.bullet);
+                this.add.audio('miniGun', 1, false).play();
             };
             return Level01;
         }(Phaser.State));
@@ -185,7 +220,7 @@ var JetFighter;
                 this.input.onDown.addOnce(this.fadeOut, this);
             };
             MainMenu.prototype.fadeOut = function () {
-                this.add.audio('click', 1, false).play();
+                this.add.audio('click', 10, false).play();
                 this.add.tween(this.background).to({ alpha: 0 }, 4000, Phaser.Easing.Linear.None, true);
                 var tween = this.add.tween(this.logo).to({ y: 1200 }, 4000, Phaser.Easing.Linear.None, true);
                 tween.onComplete.add(this.startGame, this);
@@ -213,6 +248,7 @@ var JetFighter;
                 this.load.image('titlepage', './assets/ui/titlePage.png');
                 this.load.image('logo', './assets/ui/gameLogo.png');
                 this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
+                this.load.audio('miniGun', './assets/sounds/gunShot.mp3', true);
                 this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
             };
             Preloader.prototype.create = function () {
