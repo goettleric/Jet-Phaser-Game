@@ -3,7 +3,7 @@
     export class PlayerBullet extends Phaser.Sprite {
 
         constructor(game: Phaser.Game, x: number, y: number) {
-            super(game, x, y, 'jetfighter', 'playerBullet');
+            super(game, x, y, "jetfighter", "playerBullet");
             
             //Animations
             game.add.existing(this);

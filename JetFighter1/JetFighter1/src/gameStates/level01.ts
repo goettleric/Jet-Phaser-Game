@@ -9,7 +9,7 @@
         bullet: PlayerBullet;
         enemies: Phaser.Group;
         bullets: Phaser.Group;
-        
+        fireDelayTimer: number;
         
 
         create() {
@@ -22,10 +22,12 @@
             this.enemies = this.game.add.group();
             this.enemies.enableBody = true;
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+            
 
             //Create Player Ship
             this.player = new Player(this.game, this.world.centerX, this.world.centerY * 2.5);
             this.player.anchor.setTo(0, 5);
+            this.player.animations.add('explode', ['explosion', 'explosion1', 'explosion2'], 5, false);
 
             //Create Player Bullet Group
             this.bullets = this.game.add.group();
@@ -39,11 +41,12 @@
 
         update() {
 
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+            if (this.game.input.keyboard.downDuration(Phaser.Keyboard.SPACEBAR, 1)) {
                 this.shootBullet();
             }
             //Player enemy1 collision checking
             this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
+            this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
             
         }
 
@@ -53,20 +56,30 @@
 
         }
 
-        planeCollision(player, enemy) {
-            enemy.kill();
-            player.kill();
+        fireDelayTiming() {
+            this.fireDelayTimer = setTimeout(fireDelay => this.shootBullet(), 250);
         }
 
-        shootBullet() {
-                this.bullet = new PlayerBullet(this.game, this.player.x +20, this.player.y -340);
-                this.bullets.add(this.bullet);
-                this.add.audio('miniGun', 1, false).play();
-           
-            
-            
-            
+        enemyHit(bullets, enemies) {
+            this.enemy.kill();
+            this.bullet.kill();
         }
-     }
+
+        planeCollision(player, enemy) {
+            enemy.kill();
+            player.animations.play('explode');
+            
+            //player.kill();
+           
+        }
+        shootBullet() {
+            this.bullet = new PlayerBullet(this.game, this.player.x + 20, this.player.y - 340);
+            this.bullets.add(this.bullet);
+            this.add.audio('gunShot', 10, false).play();
+
+        }
+       
+    }
+   
 
 }
