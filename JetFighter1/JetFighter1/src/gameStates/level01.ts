@@ -60,13 +60,13 @@
         }
 
         enemyHit(bullets, enemies) {
-            this.enemy.play('blowUp', 1, false, true);
-            this.bullet.kill();
+            enemies.play('blowUp', 3, false, true);
+            bullets.kill();
         }
 
         planeCollision(player, enemy) {
-            this.player.kill();
-            this.enemy.kill();
+            player.kill();
+            enemy.kill();
             
             
            

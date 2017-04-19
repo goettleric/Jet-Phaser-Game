@@ -6,7 +6,7 @@
             super(game, x, y, 'jetfighter', 'enemy1');
             this.anchor.setTo(0.5);
             //Animations
-            this.animations.add('blowUp',['explosion'], .5, false);
+            this.animations.add('blowUp',['explosion','explosion1','explosion2'], 3, false);
              // Physics
             game.add.existing(this);
             game.physics.enable(this);

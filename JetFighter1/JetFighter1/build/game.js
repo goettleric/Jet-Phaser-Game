@@ -40,7 +40,7 @@ var JetFighter;
             function EnemyFighterType1(game, x, y) {
                 var _this = _super.call(this, game, x, y, 'jetfighter', 'enemy1') || this;
                 _this.anchor.setTo(0.5);
-                _this.animations.add('blowUp', ['explosion'], .5, false);
+                _this.animations.add('blowUp', ['explosion', 'explosion1', 'explosion2'], 3, false);
                 game.add.existing(_this);
                 game.physics.enable(_this);
                 game.physics.arcade.enable(_this);
@@ -200,12 +200,12 @@ var JetFighter;
                 this.fireDelayTimer = setTimeout(function (fireDelay) { return _this.shootBullet(); }, 250);
             };
             Level01.prototype.enemyHit = function (bullets, enemies) {
-                this.enemy.play('blowUp', 1, false, true);
-                this.bullet.kill();
+                enemies.play('blowUp', 3, false, true);
+                bullets.kill();
             };
             Level01.prototype.planeCollision = function (player, enemy) {
-                this.player.kill();
-                this.enemy.kill();
+                player.kill();
+                enemy.kill();
             };
             Level01.prototype.shootBullet = function () {
                 this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340);
