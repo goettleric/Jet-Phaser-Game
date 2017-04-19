@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var JetFighter;
 (function (JetFighter) {
     var Client;
@@ -35,6 +40,7 @@ var JetFighter;
             function EnemyFighterType1(game, x, y) {
                 var _this = _super.call(this, game, x, y, 'jetfighter', 'enemy1') || this;
                 _this.anchor.setTo(0.5);
+                _this.animations.add('blowUp', ['explosion'], .5, false);
                 game.add.existing(_this);
                 game.physics.enable(_this);
                 game.physics.arcade.enable(_this);
@@ -63,6 +69,7 @@ var JetFighter;
                 _this.animations.add('bankright', ['jetRight2', 'jetRight3'], .5, false);
                 _this.animations.add('bankleft', ['jetLeft2', 'jetLeft3'], .5, false);
                 _this.animations.add('straight', ['jet1'], 0.1, false);
+                _this.animations.add('explode', ['explosion2'], .5, false);
                 game.add.existing(_this);
                 game.physics.enable(_this);
                 _this.body.collideWorldBounds = true;
@@ -88,6 +95,7 @@ var JetFighter;
                 else {
                     this.body.velocity.setTo(0, 0);
                     this.animations.play('straight');
+                    this.game.input.keyboard.clearCaptures();
                 }
             };
             return Player;
@@ -170,7 +178,6 @@ var JetFighter;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
                 this.player = new Client.Player(this.game, this.world.centerX, this.world.centerY * 2.5);
                 this.player.anchor.setTo(0, 5);
-                this.player.animations.add('explode', ['explosion', 'explosion1', 'explosion2'], 5, false);
                 this.bullets = this.game.add.group();
                 this.bullets.enableBody = true;
                 this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -181,7 +188,7 @@ var JetFighter;
                 if (this.game.input.keyboard.downDuration(Phaser.Keyboard.SPACEBAR, 1)) {
                     this.shootBullet();
                 }
-                this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
+                this.game.physics.arcade.overlap(this.player, this.enemy, this.planeCollision, null, this);
                 this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
             };
             Level01.prototype.createEnemy = function () {
@@ -193,12 +200,12 @@ var JetFighter;
                 this.fireDelayTimer = setTimeout(function (fireDelay) { return _this.shootBullet(); }, 250);
             };
             Level01.prototype.enemyHit = function (bullets, enemies) {
-                this.enemy.kill();
+                this.enemy.play('blowUp', 1, false, true);
                 this.bullet.kill();
             };
             Level01.prototype.planeCollision = function (player, enemy) {
-                enemy.kill();
-                player.animations.play('explode');
+                this.player.kill();
+                this.enemy.kill();
             };
             Level01.prototype.shootBullet = function () {
                 this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340);
@@ -258,7 +265,7 @@ var JetFighter;
                 this.load.image('titlepage', './assets/ui/titlePage.png');
                 this.load.image('logo', './assets/ui/gameLogo.png');
                 this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
-                this.load.audio('gunShot', './assets/sounds/gunShot.mp3', true);
+                this.load.audio('gunShot', './assets/sounds/gunFire.mp3', true);
                 this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
             };
             Preloader.prototype.create = function () {

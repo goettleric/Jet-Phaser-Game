@@ -27,8 +27,7 @@
             //Create Player Ship
             this.player = new Player(this.game, this.world.centerX, this.world.centerY * 2.5);
             this.player.anchor.setTo(0, 5);
-            this.player.animations.add('explode', ['explosion', 'explosion1', 'explosion2'], 5, false);
-
+            
             //Create Player Bullet Group
             this.bullets = this.game.add.group();
             this.bullets.enableBody = true;
@@ -45,7 +44,7 @@
                 this.shootBullet();
             }
             //Player enemy1 collision checking
-            this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
+            this.game.physics.arcade.overlap(this.player, this.enemy, this.planeCollision, null, this);
             this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
             
         }
@@ -61,15 +60,15 @@
         }
 
         enemyHit(bullets, enemies) {
-            this.enemy.kill();
+            this.enemy.play('blowUp', 1, false, true);
             this.bullet.kill();
         }
 
         planeCollision(player, enemy) {
-            enemy.kill();
-            player.animations.play('explode');
+            this.player.kill();
+            this.enemy.kill();
             
-            //player.kill();
+            
            
         }
         shootBullet() {

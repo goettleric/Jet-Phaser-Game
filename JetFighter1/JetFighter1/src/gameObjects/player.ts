@@ -10,11 +10,15 @@
             this.animations.add('bankright', ['jetRight2', 'jetRight3'], .5, false);
             this.animations.add('bankleft', ['jetLeft2', 'jetLeft3'], .5, false);
             this.animations.add('straight', ['jet1'], 0.1, false);
+            this.animations.add('explode', ['explosion2'], .5, false);
             game.add.existing(this);
             // Physics
             game.physics.enable(this);
             this.body.collideWorldBounds = true;
             this.body.setCircle(20);
+
+            //Player Controls
+            
         }
 
         update() {
@@ -22,7 +26,7 @@
             //Player movement
             this.body.velocity.x = 0;
             //Keyboard Controlls and Animations
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
                 this.body.velocity.x = -250;
                 this.animations.play('bankleft');
             }
@@ -40,6 +44,7 @@
             else {
                 this.body.velocity.setTo(0, 0);
                 this.animations.play('straight');
+                this.game.input.keyboard.clearCaptures();
             }
 
         }
