@@ -2,6 +2,8 @@
 
     export class EnemyFighterType1 extends Phaser.Sprite {
 
+        pointValue:number;
+
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'jetfighter', 'enemy1');
             this.anchor.setTo(0.5);
@@ -14,6 +16,8 @@
 
             this.body.collideWorldBounds = false;
             this.body.setCircle(20);
+
+            this.pointValue = 100;
         }
 
         update() {

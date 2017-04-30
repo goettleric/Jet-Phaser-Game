@@ -2,6 +2,8 @@
 
     export class Player extends Phaser.Sprite {
 
+        playerScore: number;
+
         constructor(game: Phaser.Game, x: number, y: number) {
             //Set the player sprite and anchor point
             super(game, x, y, 'jetfighter', 'jet1');
@@ -17,7 +19,7 @@
             this.body.collideWorldBounds = true;
             this.body.setCircle(20);
 
-            //Player Controls
+            this.playerScore = 0;
             
         }
 
