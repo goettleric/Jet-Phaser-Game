@@ -37,7 +37,7 @@
             this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
             
             //Spawn Enemy Ships
-            this.game.time.events.repeat(Phaser.Timer.SECOND * 10, 100, this.createEnemy, this);
+            this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.createEnemy, this);
             this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
 
             //Create the label to display the players score

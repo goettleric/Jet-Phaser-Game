@@ -22,6 +22,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build\about.html" />
     <Content Include="build\assets\pics\background2.png" />
     <Content Include="build\assets\pics\button.png" />
     <Content Include="build\assets\pics\water.png" />
@@ -29,6 +30,8 @@
     <Content Include="build\assets\sounds\gunFire.mp3" />
     <Content Include="build\assets\sprites\jetfighter.png" />
     <Content Include="build\assets\ui\titlePage.png" />
+    <Content Include="build\contact.html" />
+    <Content Include="build\scores.html" />
     <Content Include="build\styles\default.css" />
     <Content Include="build\assets\ui\gameLogo.png" />
     <Content Include="build\game.js" />

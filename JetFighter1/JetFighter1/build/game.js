@@ -239,7 +239,7 @@ var JetFighter;
                 this.bullets = this.game.add.group();
                 this.bullets.enableBody = true;
                 this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-                this.game.time.events.repeat(Phaser.Timer.SECOND * 10, 100, this.createEnemy, this);
+                this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.createEnemy, this);
                 this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
                 this.scoreString = "Score: ";
                 this.scoreText = this.game.add.text(10, 10, this.scoreString + this.player.playerScore, { font: '34px Impact', fill: '#fff' });
