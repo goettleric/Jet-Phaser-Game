@@ -1,4 +1,4 @@
-  {"frames": {
+{"frames": {
 
 "background":
 {
@@ -151,6 +151,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:61acc959b6ad64537be806a2d9aa97de:40dd8e4018b263c58f8ae4361bca352b:0b43cb9384a0adadab1812788b63cd11$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8b4253f8002b9b6aee9a5ddde0a3ee4b:40dd8e4018b263c58f8ae4361bca352b:0b43cb9384a0adadab1812788b63cd11$"
 }
 }

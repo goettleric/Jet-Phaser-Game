@@ -1,15 +1,15 @@
 ﻿module JetFighter.Client {
 
-    export class EnemyFighterType1 extends Phaser.Sprite {
+    export class EnemyFighterType3 extends Phaser.Sprite {
 
-        pointValue:number;
+        pointValue: number;
 
         constructor(game: Phaser.Game, x: number, y: number) {
-            super(game, x, y, 'jetfighter', 'enemy1');
+            super(game, x, y, 'jetfighter', 'enemy3');
             this.anchor.setTo(0.5);
             //Animations
-            this.animations.add('blowUp',['explosion','explosion1','explosion2'], 3, false);
-             // Physics
+            this.animations.add('blowUp', ['explosion', 'explosion1', 'explosion2'], 3, false);
+            // Physics
             game.add.existing(this);
             game.physics.enable(this);
             game.physics.arcade.enable(this);
@@ -18,11 +18,11 @@
             this.body.setCircle(20);
 
             //Point Value for the enemy if killed
-            this.pointValue = 100;
+            this.pointValue = 500;
         }
 
         update() {
-            this.body.velocity.y = 70;
+            this.body.velocity.y = 140;
             this.outOfBoundsKill;
         }
 
