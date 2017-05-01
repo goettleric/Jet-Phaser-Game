@@ -1,42 +1,46 @@
 ﻿module JetFighter.Client {
 
-    export class Level01 extends Phaser.State {
-
-        
+    export class Level02 extends Level01 {
         background: Phaser.TileSprite;
         music: Phaser.Sound;
         player: Player;
-        enemy: EnemyFighterType1;
+        enemy: EnemyFighterType2;
         bullet: PlayerBullet;
         enemies: Phaser.Group;
         bullets: Phaser.Group;
         fireDelayTimer: number;
-        scoreString:string;
+        scoreString: string;
         scoreText;
         stateText;
-        
+        overallScore: number;
 
+        init(score) {
+            //Set the player score from the previous level.
+            this.overallScore = score;
+           
+        }
         create() {
-            
+
             this.physics.startSystem(Phaser.Physics.ARCADE);
             //Background seting
-            
+
             this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
             //Create Enemy Group
             this.enemies = this.game.add.group();
             this.enemies.enableBody = true;
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
-            
+
 
             //Create Player Ship
             this.player = new Player(this.game, this.world.centerX, this.world.centerY * 2.5);
             this.player.anchor.setTo(0, 5);
-            
+            this.player.playerScore = this.overallScore;
+
             //Create Player Bullet Group
             this.bullets = this.game.add.group();
             this.bullets.enableBody = true;
             this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-            
+
             //Spawn Enemy Ships
             this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.createEnemy, this);
             this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
@@ -46,11 +50,12 @@
             this.scoreText = this.game.add.text(10, 10, this.scoreString + this.player.playerScore, { font: '34px Impact', fill: '#fff' });
 
             //Create text to display when changing state...etc/game over/next level/
-            this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, ' ', { font: '60px Impact', fill: '#fff', textalign: 'center'});
+            this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, ' ', { font: '60px Impact', fill: '#fff', textalign: 'center' });
             this.stateText.anchor.setTo(0.5, 0.5);
             this.stateText.visible = false;
         }
 
+        
         update() {
             //Scroll the background down
             this.background.tilePosition.y += 1;
@@ -74,9 +79,9 @@
             }
         }
 
-        //Enemy Spawn rate for level one.  Add each enemy to the enemies group.
+        //Enemy Spawn rate for level two.  Add each enemy to the enemies group.
         createEnemy() {
-            this.enemy = new EnemyFighterType1(this.game, this.world.randomX, this.world.y - 200);
+            this.enemy = new EnemyFighterType2(this.game, this.world.randomX, this.world.y - 200);
             this.enemies.add(this.enemy);
         }
 
@@ -92,17 +97,14 @@
             this.player.playerScore += this.enemy.pointValue;
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
-            //Check the player score to reach level 2
-            if (this.player.playerScore >= 1000) {
-
-                //Start the level 2 state and pass the player's score to it so it isn't lost.
-                this.game.state.start("Level02", true, false, this.player.playerScore);
+            if (this.player.playerScore > 10000) {
+                this.game.state.start('Level03', false, true, this.player.playerScore);
             }
+
         }
 
         //Check to see if player hits enemies
         planeCollision(player, enemy) {
-            //Run the explosion animation 10 frames a second, don't loop it and kill it when its done.
             player.play('explode', 10, false, true);
             player.kill();
             enemy.play('blowUp', 9, false, true);
@@ -116,9 +118,9 @@
         }
 
         enterName() {
-            //prompt user for their name to enter it in for high score page.
+            //Prompt the user for name to be used for high score page.
             return window.prompt("Enter Your Name.", "player");
-            //TODO - use a data storage to store the name and score of the player.
+
         }
         //Start the game over at level 01 and clear the world;
         startOver() {
@@ -128,6 +130,5 @@
             this.stateText.visible = false;
         }
     }
-   
-
+    
 }

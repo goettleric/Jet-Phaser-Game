@@ -50,7 +50,6 @@
     <Folder Include="src\utils\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\typings\filewriter\filewriter.d.ts" />
     <TypeScriptCompile Include="src\game.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType1.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType2.ts" />
@@ -60,6 +59,8 @@
     <TypeScriptCompile Include="src\gameStates\boot.ts" />
     <TypeScriptCompile Include="src\gameStates\gameOver.ts" />
     <TypeScriptCompile Include="src\gameStates\level01.ts" />
+    <TypeScriptCompile Include="src\gameStates\level02.ts" />
+    <TypeScriptCompile Include="src\gameStates\level03.ts" />
     <TypeScriptCompile Include="src\gameStates\mainMenu.ts" />
     <TypeScriptCompile Include="src\gameStates\preloader.ts" />
     <TypeScriptCompile Include="tsDefinitions\p2.d.ts" />

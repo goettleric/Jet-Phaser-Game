@@ -9,6 +9,7 @@
             this.state.add('Preloader', Preloader, false);
             this.state.add('MainMenu', MainMenu, false);
             this.state.add('Level01', Level01, false);
+            this.state.add('Level02', Level02, false);
             this.state.start('Boot');
             
         }
