@@ -1,13 +1,8 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var JetFighter;
 (function (JetFighter) {
     var Client;
@@ -259,6 +254,8 @@ var JetFighter;
                 else {
                     this.stateText.text = "Game Over \n Click to restart";
                     this.stateText.visible = true;
+                    this.game.paused = true;
+                    this.player.playerName = this.enterName();
                     this.game.input.onTap.addOnce(this.startOver, this);
                 }
             };
@@ -286,7 +283,11 @@ var JetFighter;
                 this.bullets.add(this.bullet);
                 this.add.audio('gunShot', 10, false).play();
             };
+            Level01.prototype.enterName = function () {
+                return window.prompt("Enter Your Name.", "player");
+            };
             Level01.prototype.startOver = function () {
+                this.game.paused = false;
                 this.game.state.start('Level01', true, false);
                 this.stateText.visible = false;
             };

@@ -14,6 +14,7 @@
         scoreString:string;
         scoreText;
         stateText;
+        fs: FileWriter;
 
         create() {
             
@@ -66,7 +67,8 @@
                 //Change the state text when player dies and show
                 this.stateText.text = "Game Over \n Click to restart";
                 this.stateText.visible = true;
-
+                this.game.paused = true;
+                this.player.playerName = this.enterName();
                 //Add click event call the startOver function
                 this.game.input.onTap.addOnce(this.startOver, this);
             }
@@ -105,8 +107,14 @@
             this.add.audio('gunShot', 10, false).play();
         }
 
+        enterName() {
+            return window.prompt("Enter Your Name.", "player");
+
+        }
         //Start the game over at level 01 and clear the world;
         startOver() {
+            //Unpause the game and restart at the first level, clearing the world.
+            this.game.paused = false;
             this.game.state.start('Level01', true, false);
             this.stateText.visible = false;
         }

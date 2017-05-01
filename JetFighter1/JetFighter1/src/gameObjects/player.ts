@@ -3,6 +3,7 @@
     export class Player extends Phaser.Sprite {
 
         playerScore: number;
+        playerName: string;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             //Set the player sprite and anchor point
