@@ -30,7 +30,6 @@
     <Content Include="build\assets\sounds\gunFire.mp3" />
     <Content Include="build\assets\sprites\jetfighter.png" />
     <Content Include="build\assets\ui\titlePage.png" />
-    <Content Include="build\contact.html" />
     <Content Include="build\scores.html" />
     <Content Include="build\styles\default.css" />
     <Content Include="build\assets\ui\gameLogo.png" />
@@ -41,6 +40,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="build\titlePage.html" />
+    <Content Include="build\assets\pics\DropUsALineBackground.jpg" />
+    <Content Include="build\contactPage.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="build\game.js.map" />
@@ -79,6 +81,8 @@
       <DependentUpon>web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="src\gameObjects\enemyFighterType4.ts" />
+    <None Include="src\gameStates\level04.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
@@ -108,6 +112,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>True</TypeScriptRemoveComments>

@@ -1,4 +1,4 @@
-﻿body {
+﻿﻿body {
     margin:auto;
     background-color: #ffffff;
     background-image: url(../assets/pics/background2.png);
@@ -45,4 +45,26 @@ content {
 }
 span {
     font-style: italic;
+}
+#titlePage {
+    background-image: url(../assets/pics/DropUsALineBackground.jpg);
+    width:40rem;
+    height:20rem;
+    border:1px solid white;
+    background-size:cover;
+}
+
+#contactPage {
+    position: relative;
+    background-image: url(../assets/pics/DropUsALineBackground.jpg);
+    background-size:cover;
+    width: auto;
+    height: 56rem;
+    background-size:100%;
+    font-size: 48px;
+
+}
+#contactPage a {
+    
+    font-size: 40px;
 }
