@@ -1,9 +1,10 @@
-﻿﻿body {
-    margin:auto;
+﻿
+body {
+    margin: auto;
     background-color: #ffffff;
     background-image: url(../assets/pics/background2.png);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
     letter-spacing: 2px;
 }

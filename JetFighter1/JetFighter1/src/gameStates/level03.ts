@@ -12,11 +12,15 @@
         scoreString: string;
         scoreText;
         stateText;
-        //overallScore: number;
+        overallScore: number;
+        x: number;
+        y: number;
 
-        init(score) {
+        init(score, x, y) {
             //Set the player score from the previous level.
             this.overallScore = score;
+            this.x = x;
+            this.y = y;
         }
         create() {
 
@@ -31,7 +35,7 @@
 
 
             //Create Player Ship
-            this.player = new Player(this.game, this.world.centerX, this.world.centerY * 2.5);
+            this.player = new Player(this.game, this.x, this.y);
             this.player.anchor.setTo(0, 5);
             this.player.playerScore = this.overallScore;
 
@@ -96,8 +100,8 @@
             this.player.playerScore += this.enemy.pointValue;
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
-            if (this.player.playerScore > 20000) {
-                this.game.state.start('Level03', false, true, this.player.playerScore);
+            if (this.player.playerScore > 800) {
+                this.game.state.start('Level04', false, true, this.player.playerScore, this.player.x, this.player.y);
             }
 
         }

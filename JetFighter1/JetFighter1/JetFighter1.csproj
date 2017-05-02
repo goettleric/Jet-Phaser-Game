@@ -63,6 +63,7 @@
     <TypeScriptCompile Include="src\gameStates\level01.ts" />
     <TypeScriptCompile Include="src\gameStates\level02.ts" />
     <TypeScriptCompile Include="src\gameStates\level03.ts" />
+    <TypeScriptCompile Include="src\gameStates\level04.ts" />
     <TypeScriptCompile Include="src\gameStates\mainMenu.ts" />
     <TypeScriptCompile Include="src\gameStates\preloader.ts" />
     <TypeScriptCompile Include="tsDefinitions\p2.d.ts" />
@@ -82,7 +83,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\gameObjects\enemyFighterType4.ts" />
-    <None Include="src\gameStates\level04.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
