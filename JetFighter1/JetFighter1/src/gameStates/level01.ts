@@ -120,18 +120,24 @@
             if (typeof (Storage) !== "undefined") {
                 //Prompt the user for name and storage in variable for storage.
                 this.player.playerName = window.prompt("Enter Your Name.", "player");
-               
+                var playerTable = (<HTMLTableElement>document.getElementById("playerScores"));
+                var nodelist = document.getElementsByTagName("tr").length;
+                var newRow = playerTable.insertRow(nodelist);
+                //Create new Cells to store the player information
+                var newPlayerCell = newRow.insertCell(0);
+                var newScoreCell = newRow.insertCell(1);
+                //Create the text nodes that will be placed in each corresponding cell
+                var newPlayer = document.createTextNode(this.player.playerName);
+                var newScore = document.createTextNode("" + this.player.playerScore);
+                //Append the cells to the corresponding rows
+                newPlayerCell.appendChild(newPlayer);
+                newScoreCell.appendChild(newScore);
+                //Store the player info on the user's web storage.
                 localStorage.setItem("player", this.player.playerName);
                 localStorage.setItem("score", this.scoreText);
-                var scoreTable = document.getElementById("playerScores");
-                
-                
-                
             } else {
                 window.prompt("Sorry, local storage is not enabled.");
             }
-            
-            //TODO - use a data storage to store the name and score of the player.
         }
         //Start the game over at level 01 and clear the world;
         startOver() {

@@ -77,7 +77,7 @@
                 this.stateText.text = "Game Over \n Click to restart";
                 this.stateText.visible = true;
                 this.game.paused = true;
-                this.player.playerName = this.enterName();
+                this.enterName();
                 //Add click event call the startOver function
                 this.game.input.onTap.addOnce(this.startOver, this);
             }
@@ -130,9 +130,29 @@
         }
 
         enterName() {
-            //Prompt the user for name to be used for high score page.
-            return window.prompt("Enter Your Name.", "player");
-
+            //prompt user for their name to enter it in for high score page.
+            //Check to see if local storage is defined.
+            if (typeof (Storage) !== "undefined") {
+                //Prompt the user for name and storage in variable for storage.
+                this.player.playerName = window.prompt("Enter Your Name.", "player");
+                var playerTable = (<HTMLTableElement>document.getElementById("playerScores"));
+                var nodelist = document.getElementsByTagName("tr").length;
+                var newRow = playerTable.insertRow(nodelist);
+                //Create new Cells to store the player information
+                var newPlayerCell = newRow.insertCell(0);
+                var newScoreCell = newRow.insertCell(1);
+                //Create the text nodes that will be placed in each corresponding cell
+                var newPlayer = document.createTextNode(this.player.playerName);
+                var newScore = document.createTextNode("" + this.player.playerScore);
+                //Append the cells to the corresponding rows
+                newPlayerCell.appendChild(newPlayer);
+                newScoreCell.appendChild(newScore);
+                //Store the player info on the user's web storage.
+                localStorage.setItem("player", this.player.playerName);
+                localStorage.setItem("score", this.scoreText);
+            } else {
+                window.prompt("Sorry, local storage is not enabled.");
+            }
         }
         //Start the game over at level 01 and clear the world;
         startOver() {
