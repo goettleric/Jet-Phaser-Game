@@ -1,7 +1,10 @@
-﻿
-body {
+﻿html {
+    width: 100%;
     margin: auto;
-    background-color: #ffffff;
+}
+body {
+    width: 100%;
+    margin: auto;
     background-image: url(../assets/pics/background2.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,16 +13,20 @@ body {
 }
 
 nav {
-    width: 50rem;
-    margin: auto;
+    width: 99%;
+    margin: 1rem auto;
     text-align: center;
+    background-color:#888;
+    background-color:rgba(0,0,0,0.7);
 }
 
-nav li {
+nav ul {
+    width: 70rem;
+    margin: auto;
+    background-color: black;
+}
+nav li { 
     display: inline-block;
-    width: 10rem;
-    height: 5rem;
-    background-image: url(../assets/pics/button.png);
     box-shadow: rgba(0,0,0,0.9) 10px 10px initial;
     background-repeat:no-repeat;
     background-size:100%;
@@ -27,45 +34,60 @@ nav li {
 }
 
 nav a {
-    position:relative;
-    top:2rem;
-    width: 10rem;
-    height: 5rem;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    width: 12rem;
+    padding:0rem 4rem;
     text-align:center;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
     text-shadow: 3px 3px 2px #888;
-    color: black;
+    color: white;
     
 }
-content {
-    position: relative;
-    top: 24rem;
-    border: 4px groove black;
+#content {
+   width: 65rem;
+    margin: auto;
+    border: 1px solid black;
 }
+
+#directions {
+    float: left;
+    margin-left: 4rem;
+    padding: 1rem;
+    width: 15rem;
+    background-color:black;
+    color: white;
+}
+
+#directions h4 {
+    color: red;
+}
+  
 span {
     font-style: italic;
 }
-#titlePage {
-    background-image: url(../assets/pics/DropUsALineBackground.jpg);
-    width:40rem;
-    height:20rem;
-    border:1px solid white;
-    background-size:cover;
-}
 
 #contactPage {
-    position: relative;
+    width: 80%;
+    margin: auto;
+    min-height: 56rem;
     background-image: url(../assets/pics/DropUsALineBackground.jpg);
+    background-repeat: no-repeat;
     background-size:cover;
-    width: auto;
-    height: 56rem;
-    background-size:100%;
-    font-size: 48px;
-
+    font-size: 20px;
 }
 #contactPage a {
-    
+    text-align:end;
     font-size: 40px;
+}
+
+footer {
+    background-color: black;
+    text-align:center;
+    color: white;
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
 }

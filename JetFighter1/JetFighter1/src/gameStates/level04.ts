@@ -47,8 +47,7 @@
             //Spawn Enemy Ships
             this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.createEnemy1, this);
             this.game.time.events.loop(Phaser.Timer.SECOND * 15, this.createEnemy2, this);
-            this.game.time.events.loop(Phaser.Timer.SECOND * 20, this.createEnemy3, this);
-            this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
+            this.game.time.events.loop(Phaser.Timer.SECOND * 20, this.createEnemy3, this);this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
 
             //Create the label to display the players score
             this.scoreString = "Score: ";
