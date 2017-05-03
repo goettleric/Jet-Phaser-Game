@@ -17,7 +17,7 @@
         y: number;
 
         init(score, x, y) {
-            //Set the player score from the previous level.
+            //Set the player score from the previous level and player x and y position.
             this.overallScore = score;
             this.x = x;
             this.y = y;
