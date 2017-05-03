@@ -8,149 +8,181 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":1200,"h":840},
 	"sourceSize": {"w":1200,"h":840}
 },
-"enemy1":
+"bose1":
 {
-	"frame": {"x":164,"y":950,"w":39,"h":70},
+	"frame": {"x":1203,"y":1,"w":303,"h":265},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":70},
-	"sourceSize": {"w":39,"h":70}
+	"spriteSourceSize": {"x":0,"y":0,"w":303,"h":265},
+	"sourceSize": {"w":303,"h":265}
+},
+"enemy1":
+{
+	"frame": {"x":1355,"y":461,"w":41,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":41,"h":72},
+	"sourceSize": {"w":41,"h":72}
 },
 "enemy2":
 {
-	"frame": {"x":298,"y":925,"w":42,"h":74},
+	"frame": {"x":1461,"y":394,"w":44,"h":76},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":74},
-	"sourceSize": {"w":42,"h":74}
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":76},
+	"sourceSize": {"w":44,"h":76}
 },
 "enemy3":
 {
-	"frame": {"x":342,"y":925,"w":46,"h":65},
+	"frame": {"x":1255,"y":400,"w":48,"h":67},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":65},
-	"sourceSize": {"w":46,"h":65}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":67},
+	"sourceSize": {"w":48,"h":67}
+},
+"enemy4":
+{
+	"frame": {"x":1203,"y":400,"w":50,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":72},
+	"sourceSize": {"w":50,"h":72}
+},
+"enemyBullet":
+{
+	"frame": {"x":1477,"y":268,"w":23,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":17},
+	"sourceSize": {"w":23,"h":17}
 },
 "explosion":
 {
-	"frame": {"x":271,"y":843,"w":89,"h":80},
+	"frame": {"x":1368,"y":377,"w":91,"h":82},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":89,"h":80},
-	"sourceSize": {"w":89,"h":80}
+	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":82},
+	"sourceSize": {"w":91,"h":82}
 },
 "explosion1":
 {
-	"frame": {"x":164,"y":843,"w":105,"h":105},
+	"frame": {"x":1368,"y":268,"w":107,"h":107},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":105},
-	"sourceSize": {"w":105,"h":105}
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":107},
+	"sourceSize": {"w":107,"h":107}
 },
 "explosion2":
 {
-	"frame": {"x":1,"y":843,"w":161,"h":130},
+	"frame": {"x":1203,"y":268,"w":163,"h":130},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":161,"h":130},
-	"sourceSize": {"w":161,"h":130}
+	"spriteSourceSize": {"x":0,"y":0,"w":163,"h":130},
+	"sourceSize": {"w":163,"h":130}
 },
 "gunFire":
 {
-	"frame": {"x":78,"y":975,"w":8,"h":27},
+	"frame": {"x":1355,"y":400,"w":10,"h":29},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":27},
-	"sourceSize": {"w":8,"h":27}
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":29},
+	"sourceSize": {"w":10,"h":29}
 },
 "jet1":
 {
-	"frame": {"x":362,"y":843,"w":46,"h":65},
+	"frame": {"x":1305,"y":400,"w":48,"h":66},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":65},
-	"sourceSize": {"w":46,"h":65}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":66},
+	"sourceSize": {"w":48,"h":66}
 },
 "jetFlame1":
 {
-	"frame": {"x":21,"y":975,"w":17,"h":32},
+	"frame": {"x":1477,"y":323,"w":19,"h":34},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":32},
-	"sourceSize": {"w":17,"h":32}
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":34},
+	"sourceSize": {"w":19,"h":34}
 },
 "jetFlame2":
 {
-	"frame": {"x":40,"y":975,"w":17,"h":31},
+	"frame": {"x":1477,"y":359,"w":19,"h":33},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":31},
-	"sourceSize": {"w":17,"h":31}
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":33},
+	"sourceSize": {"w":19,"h":33}
 },
 "jetFlame3":
 {
-	"frame": {"x":59,"y":975,"w":17,"h":31},
+	"frame": {"x":1203,"y":474,"w":19,"h":33},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":31},
-	"sourceSize": {"w":17,"h":31}
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":33},
+	"sourceSize": {"w":19,"h":33}
 },
 "jetFlame4":
 {
-	"frame": {"x":1,"y":975,"w":18,"h":32},
+	"frame": {"x":1477,"y":287,"w":20,"h":34},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":32},
-	"sourceSize": {"w":18,"h":32}
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":34},
+	"sourceSize": {"w":20,"h":34}
 },
 "jetLeft2":
 {
-	"frame": {"x":261,"y":950,"w":35,"h":66},
+	"frame": {"x":1255,"y":469,"w":37,"h":68},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":66},
-	"sourceSize": {"w":35,"h":66}
+	"spriteSourceSize": {"x":0,"y":0,"w":37,"h":68},
+	"sourceSize": {"w":37,"h":68}
 },
 "jetLeft3":
 {
-	"frame": {"x":205,"y":950,"w":16,"h":68},
+	"frame": {"x":1224,"y":474,"w":18,"h":69},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":68},
-	"sourceSize": {"w":16,"h":68}
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":69},
+	"sourceSize": {"w":18,"h":69}
 },
 "jetRight2":
 {
-	"frame": {"x":223,"y":950,"w":36,"h":67},
+	"frame": {"x":1305,"y":468,"w":38,"h":69},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":67},
-	"sourceSize": {"w":36,"h":67}
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":69},
+	"sourceSize": {"w":38,"h":69}
 },
 "jetRight3":
 {
-	"frame": {"x":390,"y":910,"w":14,"h":64},
+	"frame": {"x":1203,"y":532,"w":16,"h":66},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":64},
-	"sourceSize": {"w":14,"h":64}
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":66},
+	"sourceSize": {"w":16,"h":66}
+},
+"missile":
+{
+	"frame": {"x":1203,"y":509,"w":18,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":21},
+	"sourceSize": {"w":18,"h":21}
 },
 "playerBullet":
 {
-	"frame": {"x":78,"y":1004,"w":10,"h":16},
+	"frame": {"x":1398,"y":461,"w":12,"h":17},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":16},
-	"sourceSize": {"w":10,"h":16}
+	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":17},
+	"sourceSize": {"w":12,"h":17}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "jetfighter.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":1024},
+	"size": {"w":1507,"h":842},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8b4253f8002b9b6aee9a5ddde0a3ee4b:40dd8e4018b263c58f8ae4361bca352b:0b43cb9384a0adadab1812788b63cd11$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2126c6d5f7c36e7c7e63900494b6b6a7:7154585870e8b2e6ab29ce623260f657:0b43cb9384a0adadab1812788b63cd11$"
 }
 }

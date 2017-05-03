@@ -24,3 +24,9 @@ C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js.map
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js.map
+C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js
+C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js.map
+C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js
+C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js.map
+C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js
+C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\build\game.js.map
