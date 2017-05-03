@@ -3,7 +3,10 @@
     <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>JetFighter</title>
+        <meta name="description" content="JetFighter Phaser Game Home Page"/>
+        <meta name="author" content="Eric L Goettl"/>
+        <meta name="author" content="" />
+        <title>JetFighter Game Page</title>
         <link rel="stylesheet" href="styles/default.css" type="text/css" />
         <script src="libs/phaser.min.js"></script>
         <script src="game.js"></script>
@@ -12,9 +15,9 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="titlePage.html">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="contactPage.html">Contact Us</a></li>
-                <li><a href="scores.html">High Scores</a></li>
+                <!--<li><a href="scores.html">High Scores</a></li>-->
             </ul>
         </nav>
         <section id="directions">
@@ -23,10 +26,23 @@
             <h4>Firing</h4>
                 <p>Push the space bar repeatedly to shoot bullets.</p>
         </section>
+        <section id="score">
+            <h4>High Scores</h4>
+            <table id="playerScores">
+                <tr>
+                    <th>Player Name</th>
+                    <th>Scores</th>
+                </tr>
+                <tr>
+                    <td id="player"></td>
+                    <td id="scores"></td>
+                </tr>
+            </table>
+        </section>
         <div id="content"></div>
         <footer>
             <p>Jet Fighter &copy; 2017 Eric L. Goettl</p>
-            <p>All rights reserved</p>
+            
         </footer>
     </body>
 </html>

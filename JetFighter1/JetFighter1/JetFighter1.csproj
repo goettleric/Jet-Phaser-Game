@@ -31,6 +31,7 @@
     <Content Include="build\assets\sprites\jetfighter.png" />
     <Content Include="build\assets\ui\titlePage.png" />
     <Content Include="build\scores.html" />
+    <Content Include="build\scores.js" />
     <Content Include="build\styles\default.css" />
     <Content Include="build\assets\ui\gameLogo.png" />
     <Content Include="build\game.js" />
@@ -40,7 +41,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="build\titlePage.html" />
     <Content Include="build\assets\pics\DropUsALineBackground.jpg" />
     <Content Include="build\contactPage.html" />
   </ItemGroup>

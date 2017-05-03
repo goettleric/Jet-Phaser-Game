@@ -67,7 +67,7 @@
                 this.stateText.text = "Game Over \n Click to restart";
                 this.stateText.visible = true;
                 this.game.paused = true;
-                this.player.playerName = this.enterName();
+                this.enterName();
                 //Add click event call the startOver function
                 this.game.input.onTap.addOnce(this.startOver, this);
             }
@@ -116,7 +116,21 @@
 
         enterName() {
             //prompt user for their name to enter it in for high score page.
-            return window.prompt("Enter Your Name.", "player");
+            //Check to see if local storage is defined.
+            if (typeof (Storage) !== "undefined") {
+                //Prompt the user for name and storage in variable for storage.
+                this.player.playerName = window.prompt("Enter Your Name.", "player");
+               
+                localStorage.setItem("player", this.player.playerName);
+                localStorage.setItem("score", this.scoreText);
+                var scoreTable = document.getElementById("playerScores");
+                
+                
+                
+            } else {
+                window.prompt("Sorry, local storage is not enabled.");
+            }
+            
             //TODO - use a data storage to store the name and score of the player.
         }
         //Start the game over at level 01 and clear the world;
