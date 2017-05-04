@@ -1,15 +1,17 @@
 ﻿html {
     width: 100%;
     margin: auto;
+    
 }
 body {
     width: 100%;
     margin: auto;
     background-image: url(../assets/pics/background2.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
     letter-spacing: 2px;
+    position: relative;
 }
 
 nav {
@@ -47,7 +49,7 @@ nav a {
     color: white;  
 }
 
-#content, #about, #score {
+#about, #score {
    width: 64rem;
    margin: auto;
    border: 1px solid black;
@@ -60,9 +62,8 @@ nav a {
 }
 
 #score {
-    float:right;
-    
-    margin-right: 4rem;
+    position:absolute;
+    right: 1rem;
     padding: 1rem;
     width: 20rem;
     background-color: black;
@@ -74,8 +75,8 @@ th {
 }
 
 #directions {
-    float: left;
-    margin-left: 4rem;
+    position: absolute;
+    left: 1rem;
     padding: 1rem;
     width: 15rem;
     background-color:black;
@@ -109,7 +110,8 @@ footer {
     background-color: black;
     text-align:center;
     color: white;
-    position: absolute;
-    bottom: 0rem;
+    position: relative;
+    height: 3rem;
+    bottom: -10rem;
     width: 100%;
 }
