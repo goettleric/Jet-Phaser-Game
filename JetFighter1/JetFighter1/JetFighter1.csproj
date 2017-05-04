@@ -82,6 +82,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\gameObjects\enemyFighterType4.ts" />
+    <None Include="src\gameObjects\enemyBullet.ts" />
+    <None Include="src\gameObjects\boss1.ts" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

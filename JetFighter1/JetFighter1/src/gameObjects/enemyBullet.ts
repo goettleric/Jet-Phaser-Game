@@ -1,10 +1,9 @@
 ﻿module JetFighter.Client {
 
-    export class PlayerBullet extends Phaser.Sprite {
+    export class EnemyBullet extends Phaser.Sprite {
 
-    damage: number;
         constructor(game: Phaser.Game, x: number, y: number) {
-            super(game, x, y, "jetfighter", "playerBullet");
+            super(game, x, y, "jetfighter", "enemyBullet");
             
             //Animations
             game.add.existing(this);
@@ -13,8 +12,7 @@
             game.physics.arcade.enable(this);
             this.body.collideWorldBounds = false;
             this.body.setCircle(5);
-
-            this.damage = 1;
+            
         }
 
         update() {

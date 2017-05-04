@@ -1,15 +1,10 @@
 ﻿<Properties StartupConfiguration="{265441B2-683C-46DC-BD47-097918F970F2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="JetFighter1/build/index.html">
+  <MonoDevelop.Ide.Workbench ActiveDocument="JetFighter1/src/gameObjects/boss1.ts">
     <Files>
-      <File FileName="JetFighter1/build/index.html" Line="1" Column="1" />
-      <File FileName="JetFighter1/build/styles/default.css" Line="1" Column="1" />
-      <File FileName="JetFighter1/src/gameObjects/player.ts" Line="1" Column="1" />
-      <File FileName="JetFighter1/src/game.ts" Line="14" Column="55" />
-      <File FileName="JetFighter1/src/gameStates/preloader.ts" Line="1" Column="1" />
-      <File FileName="JetFighter1/build/contactPage.html" Line="9" Column="6" />
-      <File FileName="JetFighter1/src/gameObjects/enemyFighterType2.ts" Line="1" Column="1" />
-      <File FileName="JetFighter1/src/gameObjects/enemyFighterType4.ts" Line="1" Column="1" />
-      <File FileName="JetFighter1/src/gameStates/level04.ts" Line="103" Column="10" />
+      <File FileName="JetFighter1/build/index.html" Line="43" Column="54" />
+      <File FileName="JetFighter1/build/styles/default.css" Line="52" Column="17" />
+      <File FileName="JetFighter1/src/gameObjects/enemyFighterType1.ts" Line="8" Column="55" />
+      <File FileName="JetFighter1/src/gameObjects/boss1.ts" Line="19" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
