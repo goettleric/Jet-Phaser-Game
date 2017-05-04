@@ -62,6 +62,7 @@ nav a {
 }
 
 #score {
+    display:none;
     position:absolute;
     right: 1rem;
     padding: 1rem;
@@ -75,6 +76,7 @@ th {
 }
 
 #directions {
+    display:none;
     position: absolute;
     left: 1rem;
     padding: 1rem;
@@ -112,6 +114,6 @@ footer {
     color: white;
     position: relative;
     height: 3rem;
-    bottom: -10rem;
+    bottom: 0rem;
     width: 100%;
 }
