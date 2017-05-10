@@ -1,14 +1,15 @@
-﻿html {
-    width: 100%;
-    margin: auto;
-    
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-body {
-    width: 100%;
-    margin: auto;
+
+
+#wrapper {
+    min-height: 100%;
     background-image: url(../assets/pics/background2.png);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
     letter-spacing: 2px;
     position: relative;
@@ -18,43 +19,43 @@ nav {
     width: 99%;
     margin: .5rem auto;
     text-align: center;
-    background-color:#888;
-    background-color:rgba(0,0,0,0.7);
+    background-color: #888;
+    background-color: rgba(0,0,0,0.7);
 }
 
-nav ul {
-    width: 70rem;
-    margin: auto;
-    background-color: black;
-}
+    nav ul {
+        width: 70rem;
+        margin: auto;
+        background-color: black;
+    }
 
-nav li { 
-    display: inline-block;
-    box-shadow: rgba(0,0,0,0.9) 10px 10px initial;
-    background-repeat:no-repeat;
-    background-size:100%;
-    text-align:center;  
-}
+    nav li {
+        display: inline-block;
+        box-shadow: rgba(0,0,0,0.9) 10px 10px initial;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        text-align: center;
+    }
 
-nav a {
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    width: 12rem;
-    padding:0rem 4rem;
-    text-align:center;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: 900;
-    text-shadow: 3px 3px 2px #888;
-    color: white;  
-}
+    nav a {
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        width: 12rem;
+        padding: 0rem 4rem;
+        text-align: center;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: 900;
+        text-shadow: 3px 3px 2px #888;
+        color: white;
+    }
 
 #about, #score {
-   width: 64rem;
-   margin: auto;
-   border: 1px solid black;
-   color: white;
-   background-color: black;
+    width: 64rem;
+    margin: auto;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
 }
 
 #about {
@@ -62,8 +63,7 @@ nav a {
 }
 
 #score {
-    display:none;
-    position:absolute;
+    position: absolute;
     right: 1rem;
     padding: 1rem;
     width: 20rem;
@@ -76,19 +76,19 @@ th {
 }
 
 #directions {
-    display:none;
+    display: none;
     position: absolute;
     left: 1rem;
     padding: 1rem;
     width: 15rem;
-    background-color:black;
+    background-color: black;
     color: white;
 }
 
- h4 {
+h4 {
     color: red;
 }
-  
+
 span {
     font-style: italic;
 }
@@ -99,21 +99,20 @@ span {
     min-height: 56rem;
     background-image: url(../assets/pics/DropUsALineBackground.jpg);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     font-size: 20px;
 }
 
-#contactPage a {
-    text-align:end;
-    font-size: 40px;
-}
+    #contactPage a {
+        text-align: end;
+        font-size: 40px;
+    }
 
 footer {
     background-color: black;
-    text-align:center;
+    text-align: center;
     color: white;
-    position: relative;
-    height: 3rem;
-    bottom: 0rem;
+    bottom: 0;
+    position: absolute;
     width: 100%;
 }
