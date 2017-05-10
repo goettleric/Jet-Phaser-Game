@@ -114,6 +114,27 @@ var JetFighter;
 (function (JetFighter) {
     var Client;
     (function (Client) {
+        var JetFlame = (function (_super) {
+            __extends(JetFlame, _super);
+            function JetFlame(game, x, y) {
+                var _this = _super.call(this, game, x, y, "jetfighter", "jetFlame1") || this;
+                game.add.existing(_this);
+                _this.animations.add("burn", ["jetFlame2", "jetFlame3", "jetFlame4"], .2, true);
+                game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(5);
+                return _this;
+            }
+            return JetFlame;
+        }(Phaser.Sprite));
+        Client.JetFlame = JetFlame;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
         var Player = (function (_super) {
             __extends(Player, _super);
             function Player(game, x, y) {
@@ -234,6 +255,8 @@ var JetFighter;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
                 this.player = new Client.Player(this.game, this.world.centerX, this.world.centerY * 2.5);
                 this.player.anchor.setTo(0, 5);
+                this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+                this.exhaust.anchor.setTo(-0.7, 8.1);
                 this.bullets = this.game.add.group();
                 this.bullets.enableBody = true;
                 this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -247,6 +270,8 @@ var JetFighter;
             };
             Level01.prototype.update = function () {
                 this.background.tilePosition.y += 1;
+                this.exhaust.position = this.player.position;
+                this.exhaust.play("burn", 10, true, false);
                 if (this.player.alive) {
                     if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
                         this.shootBullet();
@@ -277,6 +302,7 @@ var JetFighter;
             };
             Level01.prototype.planeCollision = function (player, enemy) {
                 player.play('explode', 10, false, true);
+                this.exhaust.kill();
                 player.kill();
                 enemy.play('blowUp', 9, false, true);
             };
@@ -330,6 +356,8 @@ var JetFighter;
                 this.overallScore = score;
                 this.x = x;
                 this.y = y;
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Level 2...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText.anchor.setTo(0.5);
             };
             Level02.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -340,6 +368,8 @@ var JetFighter;
                 this.player = new Client.Player(this.game, this.x, this.y);
                 this.player.anchor.setTo(0, 5);
                 this.player.playerScore = this.overallScore;
+                this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+                this.exhaust.anchor.setTo(-0.7, 8.1);
                 this.bullets = this.game.add.group();
                 this.bullets.enableBody = true;
                 this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -353,6 +383,8 @@ var JetFighter;
             };
             Level02.prototype.update = function () {
                 this.background.tilePosition.y += 1;
+                this.exhaust.position = this.player.position;
+                this.exhaust.play("burn", 10, true, false);
                 if (this.player.alive) {
                     if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
                         this.shootBullet();
@@ -383,6 +415,7 @@ var JetFighter;
             };
             Level02.prototype.planeCollision = function (player, enemy) {
                 player.play('explode', 10, false, true);
+                this.exhaust.kill();
                 player.kill();
                 enemy.play('blowUp', 9, false, true);
             };
@@ -436,6 +469,8 @@ var JetFighter;
                 this.overallScore = score;
                 this.x = x;
                 this.y = y;
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Level 2...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText.anchor.setTo(0.5);
             };
             Level03.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -446,6 +481,8 @@ var JetFighter;
                 this.player = new Client.Player(this.game, this.x, this.y);
                 this.player.anchor.setTo(0, 5);
                 this.player.playerScore = this.overallScore;
+                this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+                this.exhaust.anchor.setTo(-0.7, 8.1);
                 this.bullets = this.game.add.group();
                 this.bullets.enableBody = true;
                 this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -459,6 +496,8 @@ var JetFighter;
             };
             Level03.prototype.update = function () {
                 this.background.tilePosition.y += 1;
+                this.exhaust.position = this.player.position;
+                this.exhaust.play("burn", 10, true, false);
                 if (this.player.alive) {
                     if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
                         this.shootBullet();
@@ -478,10 +517,6 @@ var JetFighter;
                 this.enemy = new Client.EnemyFighterType3(this.game, this.world.randomX, this.world.y - 40);
                 this.enemies.add(this.enemy);
             };
-            Level03.prototype.fireDelayTiming = function () {
-                var _this = this;
-                this.fireDelayTimer = setTimeout(function (fireDelay) { return _this.shootBullet(); }, 250);
-            };
             Level03.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
                 bullets.kill();
@@ -493,6 +528,7 @@ var JetFighter;
             };
             Level03.prototype.planeCollision = function (player, enemy) {
                 player.play('explode', 10, false, true);
+                this.exhaust.kill();
                 player.kill();
                 enemy.play('blowUp', 9, false, true);
             };
@@ -546,6 +582,8 @@ var JetFighter;
                 this.overallScore = score;
                 this.x = x;
                 this.y = y;
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Level 2...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText.anchor.setTo(0.5);
             };
             Level04.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -556,6 +594,8 @@ var JetFighter;
                 this.player = new Client.Player(this.game, this.x, this.y);
                 this.player.anchor.setTo(0, 5);
                 this.player.playerScore = this.overallScore;
+                this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+                this.exhaust.anchor.setTo(-0.7, 8.1);
                 this.bullets = this.game.add.group();
                 this.bullets.enableBody = true;
                 this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -571,6 +611,8 @@ var JetFighter;
             };
             Level04.prototype.update = function () {
                 this.background.tilePosition.y += 1;
+                this.exhaust.position = this.player.position;
+                this.exhaust.play("burn", 10, true, false);
                 if (this.player.alive) {
                     if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
                         this.shootBullet();
@@ -598,10 +640,6 @@ var JetFighter;
                 this.enemy = new Client.EnemyFighterType3(this.game, this.world.randomX, this.world.y - 40);
                 this.enemies.add(this.enemy);
             };
-            Level04.prototype.fireDelayTiming = function () {
-                var _this = this;
-                this.fireDelayTimer = setTimeout(function (fireDelay) { return _this.shootBullet(); }, 250);
-            };
             Level04.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
                 bullets.kill();
@@ -613,6 +651,7 @@ var JetFighter;
             };
             Level04.prototype.planeCollision = function (player, enemies) {
                 player.play('explode', 10, false, true);
+                this.exhaust.kill();
                 player.kill();
                 this.enemy.play('blowUp', 9, false, true);
             };
@@ -715,6 +754,30 @@ var JetFighter;
             return Preloader;
         }(Phaser.State));
         Client.Preloader = Preloader;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var EnemyBullet = (function (_super) {
+            __extends(EnemyBullet, _super);
+            function EnemyBullet(game, x, y) {
+                var _this = _super.call(this, game, x, y, "jetfighter", "enemyBullet") || this;
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(5);
+                return _this;
+            }
+            EnemyBullet.prototype.update = function () {
+                this.body.velocity.y = 600;
+                this.outOfBoundsKill;
+            };
+            return EnemyBullet;
+        }(Phaser.Sprite));
+        Client.EnemyBullet = EnemyBullet;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
 //# sourceMappingURL=game.js.map

@@ -52,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\game.ts" />
+    <TypeScriptCompile Include="src\gameObjects\enemyBullet.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType1.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType2.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType3.ts" />
+    <TypeScriptCompile Include="src\gameObjects\jetFlame.ts" />
     <TypeScriptCompile Include="src\gameObjects\player.ts" />
     <TypeScriptCompile Include="src\gameObjects\playerBullet.ts" />
     <TypeScriptCompile Include="src\gameStates\boot.ts" />
@@ -82,7 +84,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\gameObjects\enemyFighterType4.ts" />
-    <None Include="src\gameObjects\enemyBullet.ts" />
     <None Include="src\gameObjects\boss1.ts" />
   </ItemGroup>
   <ItemGroup>

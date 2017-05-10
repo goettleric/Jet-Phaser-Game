@@ -2,20 +2,20 @@
 
     export class Level01 extends Phaser.State {
 
-        
         background: Phaser.TileSprite;
         music: Phaser.Sound;
         player: Player;
+        exhaust: JetFlame;
         enemy: EnemyFighterType1;
         bullet: PlayerBullet;
         enemies: Phaser.Group;
         bullets: Phaser.Group;
         bulletDelay: number;
-        scoreString:string;
+        scoreString: string;
+        loaderText: Phaser.Text;
         scoreText;
         stateText;
-        
-
+     
         create() {
             
             this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -27,11 +27,13 @@
             this.enemies.enableBody = true;
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
             
-
             //Create Player Ship
             this.player = new Player(this.game, this.world.centerX, this.world.centerY * 2.5);
             this.player.anchor.setTo(0, 5);
-            
+
+            //Create the Player Jet Exhaust
+            this.exhaust = new JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+            this.exhaust.anchor.setTo(-0.7, 8.1);
             //Create Player Bullet Group
             this.bullets = this.game.add.group();
             this.bullets.enableBody = true;
@@ -53,6 +55,8 @@
         update() {
             //Scroll the background down
             this.background.tilePosition.y += 1;
+            this.exhaust.position = this.player.position;
+            this.exhaust.play("burn", 10, true, false);
             //Only allow collions check and fire if player exists.
             if (this.player.alive) {
                 //Player fire button
@@ -98,6 +102,7 @@
         planeCollision(player, enemy) {
             //Run the explosion animation 10 frames a second, don't loop it and kill it when its done.
             player.play('explode', 10, false, true);
+            this.exhaust.kill();
             player.kill();
             enemy.play('blowUp', 9, false, true);
         }
@@ -110,7 +115,6 @@
                 this.add.audio('gunShot', 10, false).play();
                 this.bulletDelay = this.game.time.now + 300;
             }
-
         }
 
         enterName() {

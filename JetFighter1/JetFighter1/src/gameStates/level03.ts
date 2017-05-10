@@ -1,17 +1,10 @@
 ﻿module JetFighter.Client {
 
     export class Level03 extends Level02 {
-        background: Phaser.TileSprite;
-        music: Phaser.Sound;
-        player: Player;
+
         enemy: EnemyFighterType3;
-        bullet: PlayerBullet;
-        enemies: Phaser.Group;
-        bullets: Phaser.Group;
-        fireDelayTimer: number;
+        bulletDelay: number;
         scoreString: string;
-        scoreText;
-        stateText;
         overallScore: number;
         x: number;
         y: number;
@@ -21,6 +14,9 @@
             this.overallScore = score;
             this.x = x;
             this.y = y;
+            this.loaderText = this.game.add.text(this.world.centerX, 200, "Level 2...",
+                { font: "18px Arial", fill: "#A9A91111", align: "center" });
+            this.loaderText.anchor.setTo(0.5);
         }
         create() {
 
@@ -38,7 +34,9 @@
             this.player = new Player(this.game, this.x, this.y);
             this.player.anchor.setTo(0, 5);
             this.player.playerScore = this.overallScore;
-
+            //Create the Player Jet Exhaust
+            this.exhaust = new JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+            this.exhaust.anchor.setTo(-0.7, 8.1);
             //Create Player Bullet Group
             this.bullets = this.game.add.group();
             this.bullets.enableBody = true;
@@ -61,6 +59,8 @@
         update() {
             //Scroll the background down
             this.background.tilePosition.y += 1;
+            this.exhaust.position = this.player.position;
+            this.exhaust.play("burn", 10, true, false);
             //Only allow collions check and fire if player exists.
             if (this.player.alive) {
                 //Player fire button
@@ -87,11 +87,6 @@
             this.enemies.add(this.enemy);
         }
 
-        //Fire delay timer to only allow one shoot per fight button press.
-        fireDelayTiming() {
-            this.fireDelayTimer = setTimeout(fireDelay => this.shootBullet(), 250);
-        }
-
         //Check to see if bullets hit enemies
         enemyHit(bullets, enemies) {
             enemies.play('blowUp', 9, false, true);
@@ -108,6 +103,7 @@
         //Check to see if player hits enemies
         planeCollision(player, enemy) {
             player.play('explode', 10, false, true);
+            this.exhaust.kill();
             player.kill();
             enemy.play('blowUp', 9, false, true);
         }

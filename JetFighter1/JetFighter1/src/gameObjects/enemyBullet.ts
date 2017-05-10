@@ -4,7 +4,7 @@
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, "jetfighter", "enemyBullet");
-            
+
             //Animations
             game.add.existing(this);
             // Physics
@@ -12,12 +12,12 @@
             game.physics.arcade.enable(this);
             this.body.collideWorldBounds = false;
             this.body.setCircle(5);
-            
+
         }
 
         update() {
             //Reset bullets out of bounds.
-            this.body.velocity.y = -600;
+            this.body.velocity.y = 600;
             this.outOfBoundsKill;
         }
 
