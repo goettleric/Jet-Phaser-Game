@@ -8,7 +8,7 @@
         bullet: PlayerBullet;
         enemies: Phaser.Group;
         bullets: Phaser.Group;
-        fireDelayTimer: number;
+        bulletDelay: number;
         scoreString: string;
         scoreText;
         stateText;
@@ -43,11 +43,11 @@
             this.bullets = this.game.add.group();
             this.bullets.enableBody = true;
             this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-
+            this.bulletDelay = 0;
             //Spawn Enemy Ships
             this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.createEnemy1, this);
             this.game.time.events.loop(Phaser.Timer.SECOND * 15, this.createEnemy2, this);
-            this.game.time.events.loop(Phaser.Timer.SECOND * 20, this.createEnemy3, this);this.game.debug.text("Use Right and Left arrow keys to move the plane", 0, this.world.height, "red");
+            this.game.time.events.loop(Phaser.Timer.SECOND * 20, this.createEnemy3, this);
 
             //Create the label to display the players score
             this.scoreString = "Score: ";
@@ -66,11 +66,11 @@
             //Only allow collions check and fire if player exists.
             if (this.player.alive) {
                 //Player fire button
-                if (this.game.input.keyboard.downDuration(Phaser.Keyboard.SPACEBAR, 1)) {
+                if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) { 
                     this.shootBullet();
                 }
                 //Player enemy1 collision checking
-                this.game.physics.arcade.overlap(this.player, this.enemy, this.planeCollision, null, this);
+                this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
                 this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
             } else {
                 //Change the state text when player dies and show
@@ -85,15 +85,15 @@
 
         //Enemy Spawn rate for level two.  Add each enemy to the enemies group.
         createEnemy1() {
-            this.enemy = new EnemyFighterType1(this.game, this.world.randomX, this.world.y - 200);
+            this.enemy = new EnemyFighterType1(this.game, this.world.randomX, this.world.y - 40);
             this.enemies.add(this.enemy);
         }
         createEnemy2() {
-            this.enemy = new EnemyFighterType2(this.game, this.world.randomX, this.world.y - 200);
+            this.enemy = new EnemyFighterType2(this.game, this.world.randomX, this.world.y - 40);
             this.enemies.add(this.enemy);
         }
         createEnemy3() {
-            this.enemy = new EnemyFighterType3(this.game, this.world.randomX, this.world.y - 200);
+            this.enemy = new EnemyFighterType3(this.game, this.world.randomX, this.world.y - 40);
             this.enemies.add(this.enemy);
         }
 
@@ -116,17 +116,21 @@
         }
 
         //Check to see if player hits enemies
-        planeCollision(player, enemy) {
+        planeCollision(player, enemies) {
             player.play('explode', 10, false, true);
             player.kill();
-            enemy.play('blowUp', 9, false, true);
+            this.enemy.play('blowUp', 9, false, true);
         }
 
         //Create a bullet add it to the bullets group and play audio for firing.
         shootBullet() {
-            this.bullet = new PlayerBullet(this.game, this.player.x + 20, this.player.y - 340);
-            this.bullets.add(this.bullet);
-            this.add.audio('gunShot', 10, false).play();
+            if (this.game.time.now > this.bulletDelay) {
+                this.bullet = new PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
+                this.bullets.add(this.bullet);
+                this.add.audio('gunShot', 10, false).play();
+                this.bulletDelay = this.game.time.now + 300;
+            }
+
         }
 
         enterName() {
