@@ -92,6 +92,7 @@
         //Check to see if bullets hit enemies
         enemyHit(bullets, enemies) {
             enemies.play('blowUp', 9, false, true);
+            this.add.audio('enemyExplosion', 5, false).play();
             bullets.kill();
             this.player.playerScore += this.enemy.pointValue;
             this.scoreText.text = this.scoreString + this.player.playerScore;
@@ -115,7 +116,7 @@
             if (this.game.time.now > this.bulletDelay) {
                 this.bullet = new PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
                 this.bullets.add(this.bullet);
-                this.add.audio('gunShot', 10, false).play();
+                this.add.audio('gunShot', 5, false).play();
                 this.bulletDelay = this.game.time.now + 300;
             }
       

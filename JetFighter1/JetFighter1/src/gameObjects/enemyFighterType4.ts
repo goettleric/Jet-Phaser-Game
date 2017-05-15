@@ -3,6 +3,7 @@
     export class EnemyFighterType4 extends Phaser.Sprite {
 
         pointValue: number;
+        fireRate: number;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'jetfighter', 'enemy4');
@@ -19,6 +20,7 @@
 
             //Point Value for the enemy if killed
             this.pointValue = 500;
+            this.fireRate = 1000;
         }
 
         update() {

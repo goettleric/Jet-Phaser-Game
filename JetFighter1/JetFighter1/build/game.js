@@ -18,6 +18,8 @@ var JetFighter;
                 _this.state.add('Level02', Client.Level02, false);
                 _this.state.add('Level03', Client.Level03, false);
                 _this.state.add('Level04', Client.Level04, false);
+                _this.state.add('Level05', Client.Level05, false);
+                _this.state.add('Level06', Client.Level06, false);
                 _this.state.start('Boot');
                 return _this;
             }
@@ -29,6 +31,30 @@ var JetFighter;
 window.onload = function () {
     new JetFighter.Client.GameEngine();
 };
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var EnemyBullet = (function (_super) {
+            __extends(EnemyBullet, _super);
+            function EnemyBullet(game, x, y) {
+                var _this = _super.call(this, game, x, y, "jetfighter", "enemyBullet") || this;
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(5);
+                return _this;
+            }
+            EnemyBullet.prototype.update = function () {
+                this.body.velocity.y = 600;
+                this.outOfBoundsKill;
+            };
+            return EnemyBullet;
+        }(Phaser.Sprite));
+        Client.EnemyBullet = EnemyBullet;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
 var JetFighter;
 (function (JetFighter) {
     var Client;
@@ -108,6 +134,34 @@ var JetFighter;
             return EnemyFighterType3;
         }(Phaser.Sprite));
         Client.EnemyFighterType3 = EnemyFighterType3;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var EnemyFighterType4 = (function (_super) {
+            __extends(EnemyFighterType4, _super);
+            function EnemyFighterType4(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'jetfighter', 'enemy4') || this;
+                _this.anchor.setTo(0.5);
+                _this.animations.add('blowUp', ['explosion', 'explosion1', 'explosion2'], 3, false);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
+                _this.body.collideWorldBounds = false;
+                _this.body.setCircle(20);
+                _this.pointValue = 500;
+                _this.fireRate = 1000;
+                return _this;
+            }
+            EnemyFighterType4.prototype.update = function () {
+                this.body.velocity.y = 180;
+                this.outOfBoundsKill;
+            };
+            return EnemyFighterType4;
+        }(Phaser.Sprite));
+        Client.EnemyFighterType4 = EnemyFighterType4;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
 var JetFighter;
@@ -293,6 +347,7 @@ var JetFighter;
             };
             Level01.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
+                this.add.audio('enemyExplosion', 5, false).play();
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
@@ -310,7 +365,7 @@ var JetFighter;
                 if (this.game.time.now > this.bulletDelay) {
                     this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
                     this.bullets.add(this.bullet);
-                    this.add.audio('gunShot', 10, false).play();
+                    this.add.audio('gunShot', 5, false).play();
                     this.bulletDelay = this.game.time.now + 300;
                 }
             };
@@ -406,6 +461,7 @@ var JetFighter;
             };
             Level02.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
+                this.add.audio('enemyExplosion', 5, false).play();
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
@@ -423,7 +479,7 @@ var JetFighter;
                 if (this.game.time.now > this.bulletDelay) {
                     this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
                     this.bullets.add(this.bullet);
-                    this.add.audio('gunShot', 10, false).play();
+                    this.add.audio('gunShot', 5, false).play();
                     this.bulletDelay = this.game.time.now + 300;
                 }
             };
@@ -519,6 +575,7 @@ var JetFighter;
             };
             Level03.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
+                this.add.audio('enemyExplosion', 5, false).play();
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
@@ -536,7 +593,7 @@ var JetFighter;
                 if (this.game.time.now > this.bulletDelay) {
                     this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
                     this.bullets.add(this.bullet);
-                    this.add.audio('gunShot', 10, false).play();
+                    this.add.audio('gunShot', 5, false).play();
                     this.bulletDelay = this.game.time.now + 300;
                 }
             };
@@ -642,10 +699,11 @@ var JetFighter;
             };
             Level04.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
+                this.add.audio('enemyExplosion', 5, false).play();
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore > 30000) {
+                if (this.player.playerScore > 2000) {
                     this.game.state.start('Level05', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -659,7 +717,7 @@ var JetFighter;
                 if (this.game.time.now > this.bulletDelay) {
                     this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
                     this.bullets.add(this.bullet);
-                    this.add.audio('gunShot', 10, false).play();
+                    this.add.audio('gunShot', 5, false).play();
                     this.bulletDelay = this.game.time.now + 300;
                 }
             };
@@ -690,6 +748,135 @@ var JetFighter;
             return Level04;
         }(Client.Level03));
         Client.Level04 = Level04;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var Level05 = (function (_super) {
+            __extends(Level05, _super);
+            function Level05() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            Level05.prototype.init = function (score, x, y) {
+                this.overallScore = score;
+                this.x = x;
+                this.y = y;
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Level 2...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText.anchor.setTo(0.5);
+            };
+            Level05.prototype.create = function () {
+                this.enemiesAlive = false;
+                this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
+                this.enemies = this.game.add.group();
+                this.enemies.enableBody = true;
+                this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+                this.enemyBullets = this.game.add.group();
+                this.enemyBullets.enableBody = true;
+                this.enemyBullets.physicsType = Phaser.Physics.ARCADE;
+                this.player = new Client.Player(this.game, this.x, this.y);
+                this.player.anchor.setTo(0, 5);
+                this.player.playerScore = this.overallScore;
+                this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+                this.exhaust.anchor.setTo(-0.7, 8.1);
+                this.bullets = this.game.add.group();
+                this.bullets.enableBody = true;
+                this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
+                this.bulletDelay = 0;
+                this.game.time.events.loop(Phaser.Timer.SECOND * 4, this.createEnemy4, this);
+                this.scoreString = "Score: ";
+                this.scoreText = this.game.add.text(10, 10, this.scoreString + this.player.playerScore, { font: '34px Impact', fill: '#fff' });
+                this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, ' ', { font: '60px Impact', fill: '#fff', textalign: 'center' });
+                this.stateText.anchor.setTo(0.5, 0.5);
+                this.stateText.visible = false;
+            };
+            Level05.prototype.update = function () {
+                this.background.tilePosition.y += 1;
+                this.exhaust.position = this.player.position;
+                this.exhaust.play("burn", 10, true, false);
+                if (this.player.alive) {
+                    if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+                        this.shootBullet();
+                    }
+                    this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
+                    this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
+                }
+                else {
+                    this.stateText.text = "Game Over \n Click to restart";
+                    this.stateText.visible = true;
+                    this.game.paused = true;
+                    this.enterName();
+                    this.game.input.onTap.addOnce(this.startOver, this);
+                }
+                if (this.enemies.length > 0) {
+                    this.enemyFire();
+                }
+            };
+            Level05.prototype.createEnemy4 = function () {
+                this.enemy = new Client.EnemyFighterType4(this.game, this.world.randomX, this.world.y - 40);
+                this.enemies.add(this.enemy);
+            };
+            Level05.prototype.enemyFire = function () {
+                if (this.game.time.now > this.enemy.fireRate) {
+                    this.enemyBullet = new Client.EnemyBullet(this.game, this.enemy.x, this.enemy.y);
+                    this.enemyBullets.add(this.enemyBullet);
+                    this.add.audio('gunShot', 5, false).play();
+                    this.enemy.fireRate = this.game.time.now + this.enemy.fireRate;
+                }
+            };
+            Level05.prototype.enemyHit = function (bullets, enemies) {
+                enemies.play('blowUp', 9, false, true);
+                this.add.audio('enemyExplosion', 5, false).play();
+                bullets.kill();
+                this.player.playerScore += this.enemy.pointValue;
+                this.scoreText.text = this.scoreString + this.player.playerScore;
+                if (this.player.playerScore > 15000) {
+                    this.game.state.start('Level06', false, true, this.player.playerScore, this.player.x, this.player.y);
+                }
+            };
+            Level05.prototype.planeCollision = function (player, enemies) {
+                player.play('explode', 10, false, true);
+                this.exhaust.kill();
+                player.kill();
+                this.enemy.play('blowUp', 9, false, true);
+            };
+            Level05.prototype.shootBullet = function () {
+                if (this.game.time.now > this.bulletDelay) {
+                    this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
+                    this.bullets.add(this.bullet);
+                    this.add.audio('gunShot', 5, false).play();
+                    this.bulletDelay = this.game.time.now + 300;
+                }
+            };
+            Level05.prototype.enterName = function () {
+                if (typeof (Storage) !== "undefined") {
+                    this.player.playerName = window.prompt("Enter Your Name.", "player");
+                    var playerTable = document.getElementById("playerScores");
+                    var nodelist = document.getElementsByTagName("tr").length;
+                    var newRow = playerTable.insertRow(nodelist);
+                    var newPlayerCell = newRow.insertCell(0);
+                    var newScoreCell = newRow.insertCell(1);
+                    var newPlayer = document.createTextNode(this.player.playerName);
+                    var newScore = document.createTextNode("" + this.player.playerScore);
+                    newPlayerCell.appendChild(newPlayer);
+                    newScoreCell.appendChild(newScore);
+                    localStorage.setItem("player", this.player.playerName);
+                    localStorage.setItem("score", this.scoreText);
+                }
+                else {
+                    window.prompt("Sorry, local storage is not enabled.");
+                }
+            };
+            Level05.prototype.startOver = function () {
+                this.game.paused = false;
+                this.game.state.start('Level01', true, false);
+                this.stateText.visible = false;
+            };
+            return Level05;
+        }(Client.Level04));
+        Client.Level05 = Level05;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
 var JetFighter;
@@ -741,6 +928,7 @@ var JetFighter;
                 this.load.image('logo', './assets/ui/gameLogo.png');
                 this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
                 this.load.audio('gunShot', './assets/sounds/gunFire.mp3', true);
+                this.load.audio('enemyExplosion', './assets/sounds/Explosion.mp3', true);
                 this.load.image('water', 'assets/pics/water.png');
                 this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
             };
@@ -760,24 +948,133 @@ var JetFighter;
 (function (JetFighter) {
     var Client;
     (function (Client) {
-        var EnemyBullet = (function (_super) {
-            __extends(EnemyBullet, _super);
-            function EnemyBullet(game, x, y) {
-                var _this = _super.call(this, game, x, y, "jetfighter", "enemyBullet") || this;
-                game.add.existing(_this);
-                game.physics.enable(_this);
-                game.physics.arcade.enable(_this);
-                _this.body.collideWorldBounds = false;
-                _this.body.setCircle(5);
-                return _this;
+        var Level06 = (function (_super) {
+            __extends(Level06, _super);
+            function Level06() {
+                return _super !== null && _super.apply(this, arguments) || this;
             }
-            EnemyBullet.prototype.update = function () {
-                this.body.velocity.y = 600;
-                this.outOfBoundsKill;
+            Level06.prototype.init = function (score, x, y) {
+                this.overallScore = score;
+                this.x = x;
+                this.y = y;
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Level 2...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText.anchor.setTo(0.5);
             };
-            return EnemyBullet;
-        }(Phaser.Sprite));
-        Client.EnemyBullet = EnemyBullet;
+            Level06.prototype.create = function () {
+                this.enemiesAlive = false;
+                this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
+                this.enemies = this.game.add.group();
+                this.enemies.enableBody = true;
+                this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+                this.enemyBullets = this.game.add.group();
+                this.enemyBullets.enableBody = true;
+                this.enemyBullets.physicsType = Phaser.Physics.ARCADE;
+                this.player = new Client.Player(this.game, this.x, this.y);
+                this.player.anchor.setTo(0, 5);
+                this.player.playerScore = this.overallScore;
+                this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
+                this.exhaust.anchor.setTo(-0.7, 8.1);
+                this.bullets = this.game.add.group();
+                this.bullets.enableBody = true;
+                this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
+                this.bulletDelay = 0;
+                this.game.time.events.loop(Phaser.Timer.SECOND * 4, this.createEnemy4, this);
+                this.scoreString = "Score: ";
+                this.scoreText = this.game.add.text(10, 10, this.scoreString + this.player.playerScore, { font: '34px Impact', fill: '#fff' });
+                this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, ' ', { font: '60px Impact', fill: '#fff', textalign: 'center' });
+                this.stateText.anchor.setTo(0.5, 0.5);
+                this.stateText.visible = false;
+            };
+            Level06.prototype.update = function () {
+                this.background.tilePosition.y += 1;
+                this.exhaust.position = this.player.position;
+                this.exhaust.play("burn", 10, true, false);
+                if (this.player.alive) {
+                    if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+                        this.shootBullet();
+                    }
+                    this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
+                    this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
+                }
+                else {
+                    this.stateText.text = "Game Over \n Click to restart";
+                    this.stateText.visible = true;
+                    this.game.paused = true;
+                    this.enterName();
+                    this.game.input.onTap.addOnce(this.startOver, this);
+                }
+                if (this.enemies.length > 0) {
+                    this.enemyFire();
+                }
+            };
+            Level06.prototype.createEnemy1 = function () {
+                this.enemy = new Client.EnemyFighterType1(this.game, this.world.randomX, this.world.y - 40);
+                this.enemies.add(this.enemy);
+            };
+            Level06.prototype.createEnemy4 = function () {
+                this.enemy = new Client.EnemyFighterType4(this.game, this.world.randomX, this.world.y - 40);
+                this.enemies.add(this.enemy);
+            };
+            Level06.prototype.enemyFire = function () {
+                if (this.game.time.now > this.enemy.fireRate) {
+                    this.enemyBullet = new Client.EnemyBullet(this.game, this.enemy.x, this.enemy.y);
+                    this.enemyBullets.add(this.enemyBullet);
+                    this.add.audio('gunShot', 5, false).play();
+                    this.enemy.fireRate = this.game.time.now + this.enemy.fireRate;
+                }
+            };
+            Level06.prototype.enemyHit = function (bullets, enemies) {
+                enemies.play('blowUp', 9, false, true);
+                this.add.audio('enemyExplosion', 5, false).play();
+                bullets.kill();
+                this.player.playerScore += this.enemy.pointValue;
+                this.scoreText.text = this.scoreString + this.player.playerScore;
+                if (this.player.playerScore > 30000) {
+                    this.game.state.start('Level07', false, true, this.player.playerScore, this.player.x, this.player.y);
+                }
+            };
+            Level06.prototype.planeCollision = function (player, enemies) {
+                player.play('explode', 10, false, true);
+                this.exhaust.kill();
+                player.kill();
+                this.enemy.play('blowUp', 9, false, true);
+            };
+            Level06.prototype.shootBullet = function () {
+                if (this.game.time.now > this.bulletDelay) {
+                    this.bullet = new Client.PlayerBullet(this.game, this.player.x + 20, this.player.y - 340, 100);
+                    this.bullets.add(this.bullet);
+                    this.add.audio('gunShot', 5, false).play();
+                    this.bulletDelay = this.game.time.now + 300;
+                }
+            };
+            Level06.prototype.enterName = function () {
+                if (typeof (Storage) !== "undefined") {
+                    this.player.playerName = window.prompt("Enter Your Name.", "player");
+                    var playerTable = document.getElementById("playerScores");
+                    var nodelist = document.getElementsByTagName("tr").length;
+                    var newRow = playerTable.insertRow(nodelist);
+                    var newPlayerCell = newRow.insertCell(0);
+                    var newScoreCell = newRow.insertCell(1);
+                    var newPlayer = document.createTextNode(this.player.playerName);
+                    var newScore = document.createTextNode("" + this.player.playerScore);
+                    newPlayerCell.appendChild(newPlayer);
+                    newScoreCell.appendChild(newScore);
+                    localStorage.setItem("player", this.player.playerName);
+                    localStorage.setItem("score", this.scoreText);
+                }
+                else {
+                    window.prompt("Sorry, local storage is not enabled.");
+                }
+            };
+            Level06.prototype.startOver = function () {
+                this.game.paused = false;
+                this.game.state.start('Level01', true, false);
+                this.stateText.visible = false;
+            };
+            return Level06;
+        }(Client.Level05));
+        Client.Level06 = Level06;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
 //# sourceMappingURL=game.js.map

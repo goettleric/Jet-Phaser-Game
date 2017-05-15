@@ -27,6 +27,7 @@
     <Content Include="build\assets\pics\button.png" />
     <Content Include="build\assets\pics\water.png" />
     <Content Include="build\assets\sounds\aircraft009.mp3" />
+    <Content Include="build\assets\sounds\Explosion.mp3" />
     <Content Include="build\assets\sounds\gunFire.mp3" />
     <Content Include="build\assets\sprites\jetfighter.png" />
     <Content Include="build\assets\ui\titlePage.png" />
@@ -56,6 +57,7 @@
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType1.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType2.ts" />
     <TypeScriptCompile Include="src\gameObjects\enemyFighterType3.ts" />
+    <TypeScriptCompile Include="src\gameObjects\enemyFighterType4.ts" />
     <TypeScriptCompile Include="src\gameObjects\jetFlame.ts" />
     <TypeScriptCompile Include="src\gameObjects\player.ts" />
     <TypeScriptCompile Include="src\gameObjects\playerBullet.ts" />
@@ -65,6 +67,8 @@
     <TypeScriptCompile Include="src\gameStates\level02.ts" />
     <TypeScriptCompile Include="src\gameStates\level03.ts" />
     <TypeScriptCompile Include="src\gameStates\level04.ts" />
+    <TypeScriptCompile Include="src\gameStates\level05.ts" />
+    <TypeScriptCompile Include="src\gameStates\Level06.ts" />
     <TypeScriptCompile Include="src\gameStates\mainMenu.ts" />
     <TypeScriptCompile Include="src\gameStates\preloader.ts" />
     <TypeScriptCompile Include="tsDefinitions\p2.d.ts" />
@@ -83,7 +87,6 @@
       <DependentUpon>web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="src\gameObjects\enemyFighterType4.ts" />
     <None Include="src\gameObjects\boss1.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +146,7 @@
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>

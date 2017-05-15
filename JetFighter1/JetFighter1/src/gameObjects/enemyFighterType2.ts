@@ -3,6 +3,7 @@
     export class EnemyFighterType2 extends Phaser.Sprite {
 
         pointValue: number;
+        fireRate: number;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'jetfighter', 'enemy2');
