@@ -6,7 +6,6 @@
         enemy: EnemyFighterType4;
         enemyBullet: EnemyBullet;
         enemyBullets: Phaser.Group;
-        enemiesAlive: boolean;
         bulletDelay: number;
         scoreString: string;
         scoreText;
@@ -26,8 +25,6 @@
         }
         create() {
 
-            //
-            this.enemiesAlive = false;
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
             //Background seting
@@ -42,10 +39,12 @@
             this.enemyBullets = this.game.add.group();
             this.enemyBullets.enableBody = true;
             this.enemyBullets.physicsType = Phaser.Physics.ARCADE;
+
             //Create Player Ship
             this.player = new Player(this.game, this.x, this.y);
             this.player.anchor.setTo(0, 5);
             this.player.playerScore = this.overallScore;
+
             //Create the Player Jet Exhaust
             this.exhaust = new JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
             this.exhaust.anchor.setTo(-0.7, 8.1);
@@ -81,6 +80,9 @@
                 //Player enemy1 collision checking
                 this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
                 this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
+
+                this.game.physics.arcade.overlap(this.player, this.enemyBullet, this.playerHit, null, this);
+                
             } else {
                 //Change the state text when player dies and show
                 this.stateText.text = "Game Over \n Click to restart";
@@ -125,6 +127,13 @@
             }
 
         }
+        playerHit(player, enemyBullets) {
+         
+            player.kill();
+            this.exhaust.kill();
+            enemyBullets.kill();
+         
+        }
 
         //Check to see if player hits enemies
         planeCollision(player, enemies) {
@@ -165,7 +174,7 @@
                 newScoreCell.appendChild(newScore);
                 //Store the player info on the user's web storage.
                 localStorage.setItem("player", this.player.playerName);
-                localStorage.setItem("score", this.scoreText);
+                localStorage.setItem("score", "" + this.player.playerScore.toString);
             } else {
                 window.prompt("Sorry, local storage is not enabled.");
             }

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_NewBackgroundProfile>True</_NewBackgroundProfile>
+    <_PublishTargetUrl>C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\bin\Release\PublishOutput</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/JetFighter1.dll">
+      <publishTime>05/15/2017 20:04:34</publishTime>
+    </File>
+    <File Include="bin/web.config">
+      <publishTime>05/15/2017 20:04:34</publishTime>
+    </File>
+    <File Include="bin/web.Debug.config">
+      <publishTime>04/01/2017 09:20:11</publishTime>
+    </File>
+    <File Include="bin/web.Release.config">
+      <publishTime>04/01/2017 09:20:11</publishTime>
+    </File>
+    <File Include="build/about.html">
+      <publishTime>05/10/2017 11:47:49</publishTime>
+    </File>
+    <File Include="build/assets/pics/background2.png">
+      <publishTime>04/01/2017 10:40:07</publishTime>
+    </File>
+    <File Include="build/assets/pics/button.png">
+      <publishTime>05/05/2017 09:43:38</publishTime>
+    </File>
+    <File Include="build/assets/pics/DropUsALineBackground.jpg">
+      <publishTime>05/03/2017 08:45:11</publishTime>
+    </File>
+    <File Include="build/assets/pics/water.png">
+      <publishTime>04/30/2017 16:19:23</publishTime>
+    </File>
+    <File Include="build/assets/sounds/aircraft009.mp3">
+      <publishTime>04/01/2017 10:16:08</publishTime>
+    </File>
+    <File Include="build/assets/sounds/click.ogg">
+      <publishTime>04/01/2017 09:20:08</publishTime>
+    </File>
+    <File Include="build/assets/sounds/Explosion.mp3">
+      <publishTime>05/15/2017 10:12:25</publishTime>
+    </File>
+    <File Include="build/assets/sounds/gunFire.mp3">
+      <publishTime>04/18/2017 20:34:39</publishTime>
+    </File>
+    <File Include="build/assets/sprites/jetfighter.json">
+      <publishTime>05/10/2017 13:40:38</publishTime>
+    </File>
+    <File Include="build/assets/sprites/jetfighter.png">
+      <publishTime>05/10/2017 13:40:38</publishTime>
+    </File>
+    <File Include="build/assets/ui/gameLogo.png">
+      <publishTime>04/13/2017 17:25:50</publishTime>
+    </File>
+    <File Include="build/assets/ui/titlePage.png">
+      <publishTime>04/01/2017 10:43:11</publishTime>
+    </File>
+    <File Include="build/contactPage.html">
+      <publishTime>05/10/2017 11:47:49</publishTime>
+    </File>
+    <File Include="build/game.js">
+      <publishTime>05/15/2017 20:04:53</publishTime>
+    </File>
+    <File Include="build/game.js.map">
+      <publishTime>05/15/2017 20:04:53</publishTime>
+    </File>
+    <File Include="build/index.html">
+      <publishTime>05/14/2017 19:48:58</publishTime>
+    </File>
+    <File Include="build/libs/phaser.min.js">
+      <publishTime>04/01/2017 09:20:08</publishTime>
+    </File>
+    <File Include="build/scores.html">
+      <publishTime>05/15/2017 14:17:50</publishTime>
+    </File>
+    <File Include="build/styles/default.css">
+      <publishTime>05/15/2017 09:34:08</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/05/2017 09:43:38</publishTime>
+    </File>
+    <File Include="src/game.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/enemyBullet.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/enemyFighterType1.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/enemyFighterType2.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/enemyFighterType3.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/enemyFighterType4.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/jetFlame.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/player.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameObjects/playerBullet.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/boot.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/gameOver.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/level01.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/level02.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/level03.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/level04.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/level05.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/Level06.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/mainMenu.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="src/gameStates/preloader.js">
+      <publishTime>05/15/2017 20:04:59</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>05/15/2017 20:04:34</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

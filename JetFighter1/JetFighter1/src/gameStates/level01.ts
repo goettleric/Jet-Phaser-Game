@@ -66,6 +66,7 @@
                 //Player enemy1 collision checking
                 this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
                 this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
+                
             } else {
                 //Change the state text when player dies and show
                 this.stateText.text = "Game Over \n Click to restart";

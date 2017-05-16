@@ -24,9 +24,6 @@
         }
         create() {
 
-            //
-            this.enemiesAlive = false;
-
             this.physics.startSystem(Phaser.Physics.ARCADE);
             //Background seting
 

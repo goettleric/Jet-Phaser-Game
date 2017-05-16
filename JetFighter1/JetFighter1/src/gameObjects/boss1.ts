@@ -23,7 +23,7 @@
 
         update() {
             //Reset bullets out of bounds.
-            this.body.velocity.y = -600;
+            
             this.outOfBoundsKill;
         }
 

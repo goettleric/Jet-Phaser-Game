@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var JetFighter;
 (function (JetFighter) {
     var Client;
@@ -767,7 +772,6 @@ var JetFighter;
                 this.loaderText.anchor.setTo(0.5);
             };
             Level05.prototype.create = function () {
-                this.enemiesAlive = false;
                 this.physics.startSystem(Phaser.Physics.ARCADE);
                 this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
@@ -802,6 +806,7 @@ var JetFighter;
                     }
                     this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
                     this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
+                    this.game.physics.arcade.overlap(this.player, this.enemyBullet, this.playerHit, null, this);
                 }
                 else {
                     this.stateText.text = "Game Over \n Click to restart";
@@ -836,6 +841,11 @@ var JetFighter;
                     this.game.state.start('Level06', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
+            Level05.prototype.playerHit = function (player, enemyBullets) {
+                player.kill();
+                this.exhaust.kill();
+                enemyBullets.kill();
+            };
             Level05.prototype.planeCollision = function (player, enemies) {
                 player.play('explode', 10, false, true);
                 this.exhaust.kill();
@@ -863,7 +873,7 @@ var JetFighter;
                     newPlayerCell.appendChild(newPlayer);
                     newScoreCell.appendChild(newScore);
                     localStorage.setItem("player", this.player.playerName);
-                    localStorage.setItem("score", this.scoreText);
+                    localStorage.setItem("score", "" + this.player.playerScore.toString);
                 }
                 else {
                     window.prompt("Sorry, local storage is not enabled.");
@@ -883,71 +893,6 @@ var JetFighter;
 (function (JetFighter) {
     var Client;
     (function (Client) {
-        var MainMenu = (function (_super) {
-            __extends(MainMenu, _super);
-            function MainMenu() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MainMenu.prototype.create = function () {
-                this.background = this.add.sprite(0, 0, 'titlepage');
-                this.background.alpha = 0;
-                this.logo = this.add.sprite(this.world.centerX, -300, 'logo');
-                this.logo.anchor.setTo(0.5);
-                this.add.tween(this.background).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
-                this.add.tween(this.logo).to({ y: 400 }, 2000, Phaser.Easing.Elastic.Out, true, 500);
-                this.game.debug.text("Click to start the game", this.world.width / 2.9, this.world.height - 100, "red");
-                this.input.onDown.addOnce(this.fadeOut, this);
-            };
-            MainMenu.prototype.fadeOut = function () {
-                this.add.audio('click', 10, false).play();
-                this.add.tween(this.background).to({ alpha: 0 }, 4000, Phaser.Easing.Linear.None, true);
-                var tween = this.add.tween(this.logo).to({ y: 1200 }, 4000, Phaser.Easing.Linear.None, true);
-                tween.onComplete.add(this.startGame, this);
-            };
-            MainMenu.prototype.startGame = function () {
-                this.game.state.start('Level01', true, false);
-            };
-            return MainMenu;
-        }(Phaser.State));
-        Client.MainMenu = MainMenu;
-    })(Client = JetFighter.Client || (JetFighter.Client = {}));
-})(JetFighter || (JetFighter = {}));
-var JetFighter;
-(function (JetFighter) {
-    var Client;
-    (function (Client) {
-        var Preloader = (function (_super) {
-            __extends(Preloader, _super);
-            function Preloader() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            Preloader.prototype.preload = function () {
-                this.loaderText = this.game.add.text(this.world.centerX, 200, "Loading...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
-                this.loaderText.anchor.setTo(0.5);
-                this.load.image('titlepage', './assets/ui/titlePage.png');
-                this.load.image('logo', './assets/ui/gameLogo.png');
-                this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
-                this.load.audio('gunShot', './assets/sounds/gunFire.mp3', true);
-                this.load.audio('enemyExplosion', './assets/sounds/Explosion.mp3', true);
-                this.load.image('water', 'assets/pics/water.png');
-                this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
-            };
-            Preloader.prototype.create = function () {
-                var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
-                tween.onComplete.add(this.startMainMenu, this);
-            };
-            Preloader.prototype.startMainMenu = function () {
-                this.game.state.start('MainMenu', true, false);
-            };
-            return Preloader;
-        }(Phaser.State));
-        Client.Preloader = Preloader;
-    })(Client = JetFighter.Client || (JetFighter.Client = {}));
-})(JetFighter || (JetFighter = {}));
-var JetFighter;
-(function (JetFighter) {
-    var Client;
-    (function (Client) {
         var Level06 = (function (_super) {
             __extends(Level06, _super);
             function Level06() {
@@ -961,7 +906,6 @@ var JetFighter;
                 this.loaderText.anchor.setTo(0.5);
             };
             Level06.prototype.create = function () {
-                this.enemiesAlive = false;
                 this.physics.startSystem(Phaser.Physics.ARCADE);
                 this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
@@ -1077,4 +1021,102 @@ var JetFighter;
         Client.Level06 = Level06;
     })(Client = JetFighter.Client || (JetFighter.Client = {}));
 })(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var MainMenu = (function (_super) {
+            __extends(MainMenu, _super);
+            function MainMenu() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            MainMenu.prototype.create = function () {
+                this.background = this.add.sprite(0, 0, 'titlepage');
+                this.background.alpha = 0;
+                this.logo = this.add.sprite(this.world.centerX, -300, 'logo');
+                this.logo.anchor.setTo(0.5);
+                this.add.tween(this.background).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+                this.add.tween(this.logo).to({ y: 400 }, 2000, Phaser.Easing.Elastic.Out, true, 500);
+                this.game.debug.text("Click to start the game", this.world.width / 2.9, this.world.height - 100, "red");
+                this.input.onDown.addOnce(this.fadeOut, this);
+            };
+            MainMenu.prototype.fadeOut = function () {
+                this.add.audio('click', 10, false).play();
+                this.add.tween(this.background).to({ alpha: 0 }, 4000, Phaser.Easing.Linear.None, true);
+                var tween = this.add.tween(this.logo).to({ y: 1200 }, 4000, Phaser.Easing.Linear.None, true);
+                tween.onComplete.add(this.startGame, this);
+            };
+            MainMenu.prototype.startGame = function () {
+                this.game.state.start('Level01', true, false);
+            };
+            return MainMenu;
+        }(Phaser.State));
+        Client.MainMenu = MainMenu;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var JetFighter;
+(function (JetFighter) {
+    var Client;
+    (function (Client) {
+        var Preloader = (function (_super) {
+            __extends(Preloader, _super);
+            function Preloader() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            Preloader.prototype.preload = function () {
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Loading...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText.anchor.setTo(0.5);
+                this.load.image('titlepage', './assets/ui/titlePage.png');
+                this.load.image('logo', './assets/ui/gameLogo.png');
+                this.load.audio('click', './assets/sounds/aircraft009.mp3', true);
+                this.load.audio('gunShot', './assets/sounds/gunFire.mp3', true);
+                this.load.audio('enemyExplosion', './assets/sounds/Explosion.mp3', true);
+                this.load.image('water', 'assets/pics/water.png');
+                this.load.atlas('jetfighter', './assets/sprites/jetfighter.png', './assets/sprites/jetfighter.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+            };
+            Preloader.prototype.create = function () {
+                var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+                tween.onComplete.add(this.startMainMenu, this);
+            };
+            Preloader.prototype.startMainMenu = function () {
+                this.game.state.start('MainMenu', true, false);
+            };
+            return Preloader;
+        }(Phaser.State));
+        Client.Preloader = Preloader;
+    })(Client = JetFighter.Client || (JetFighter.Client = {}));
+})(JetFighter || (JetFighter = {}));
+var DataConnectivity = (function () {
+    function DataConnectivity() {
+    }
+    DataConnectivity.prototype.LoadDB = function () {
+        var connection = new ActiveXObject("ADODB.Connection");
+        var connectionstring = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\App_Data\Database1.mdf;Integrated Security=True";
+        connection.Open(connectionstring);
+        var rs = new ActiveXObject("ADODB.Recordset");
+        rs.Open("select * from player", connection);
+        rs.MoveFirst();
+        var span = document.createElement("span");
+        span.style.color = "Blue";
+        span.innerText = "  ID " + "  Name " + "   Score";
+        document.body.appendChild(span);
+        while (!rs.eof) {
+            var span = document.createElement("span");
+            span.style.color = "green";
+            span.innerText = "\n " + rs.fields(0) + " |  " + rs.fields(1) + " |  " + rs.fields(2);
+            document.body.appendChild(span);
+            rs.MoveNext();
+        }
+        rs.close();
+        connection.close();
+    };
+    return DataConnectivity;
+}());
+window.onload = function () {
+    var obj = new DataConnectivity();
+    var bttn = document.getElementById("ShowData");
+    bttn.onclick = function () {
+        obj.LoadDB();
+    };
+};
 //# sourceMappingURL=game.js.map
