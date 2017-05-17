@@ -17,7 +17,10 @@
             this.animations.add('explode', ['explosion2'], .5, false);
             game.add.existing(this);
             // Physics
+            game.add.existing(this);
             game.physics.enable(this);
+            game.physics.arcade.enable(this);
+            
             this.body.collideWorldBounds = true;
             this.body.setCircle(20);
 

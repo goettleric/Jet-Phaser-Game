@@ -97,7 +97,7 @@
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
             //Check the player score to reach level 2
-            if (this.player.playerScore >= 1000) {
+            if (this.player.playerScore >= 100) {
 
                 //Start the level 2 state and pass the player's score to it so it isn't lost.
                 this.game.state.start("Level02", true, false, this.player.playerScore, this.player.x, this.player.y);

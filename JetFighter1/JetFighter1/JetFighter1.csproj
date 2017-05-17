@@ -31,6 +31,7 @@
     <Content Include="build\assets\sounds\gunFire.mp3" />
     <Content Include="build\assets\sprites\jetfighter.png" />
     <Content Include="build\assets\ui\titlePage.png" />
+    <Content Include="build\menu.js" />
     <Content Include="build\scores.html" />
     <Content Include="build\styles\default.css" />
     <Content Include="build\assets\ui\gameLogo.png" />

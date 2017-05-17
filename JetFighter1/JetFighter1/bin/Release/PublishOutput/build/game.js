@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var JetFighter;
 (function (JetFighter) {
     var Client;
@@ -262,7 +267,9 @@ var JetFighter;
                 _this.animations.add('straight', ['jet1'], 0.1, false);
                 _this.animations.add('explode', ['explosion2'], .5, false);
                 game.add.existing(_this);
+                game.add.existing(_this);
                 game.physics.enable(_this);
+                game.physics.arcade.enable(_this);
                 _this.body.collideWorldBounds = true;
                 _this.body.setCircle(20);
                 _this.playerScore = 0;

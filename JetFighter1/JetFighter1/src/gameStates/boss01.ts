@@ -183,9 +183,10 @@
         }
 
         fireMissile() {
-            if (this.player.missileCount > 0) {
+            if (this.player.missileCount > 0 && this.game.time.now > this.bulletDelay) {
                 this.missile = new Missile(this.game, this.player.x + 20, this.player.y - 340, 200);
                 this.player.missileCount -= 1;
+                this.bulletDelay = this.game.time.now + 500;
             }
         
         }

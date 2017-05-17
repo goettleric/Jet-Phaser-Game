@@ -32,9 +32,10 @@
             
             //Background seting
             //Level header
-            this.levelString = "Level:";
-            this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString +"05", { font: '34px Impact', fill: '#fff' });
+            
             this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
+            this.levelString = "Level:";
+            this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "05", { font: '34px Impact', fill: '#fff' });
             //Create Enemy Group
             this.enemies = this.game.add.group();
             this.enemies.enableBody = true;
@@ -49,6 +50,7 @@
             //Create Player Ship
             this.player = new Player(this.game, this.x, this.y);
             this.player.anchor.setTo(0, 5);
+            
             this.player.playerScore = this.overallScore;
 
             //Create the Player Jet Exhaust
@@ -127,7 +129,7 @@
             this.player.playerScore += this.enemy.pointValue;
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
-            if (this.player.playerScore > 15000) {
+            if (this.player.playerScore > 4000) {
                 this.game.state.start('Level06', false, true, this.player.playerScore, this.player.x, this.player.y);
             }
 
