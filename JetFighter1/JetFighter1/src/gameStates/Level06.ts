@@ -6,6 +6,8 @@
         
         enemiesAlive: boolean;
         bulletDelay: number;
+        levelString: string;
+        levelText;
         scoreString: string;
         scoreText;
         stateText;
@@ -26,7 +28,9 @@
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
             //Background seting
-
+            //Level header
+            this.levelString = "Level:";
+            this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString +"06", { font: '34px Impact', fill: '#fff' });
             this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
             //Create Enemy Group
             this.enemies = this.game.add.group();
@@ -37,6 +41,7 @@
             this.enemyBullets = this.game.add.group();
             this.enemyBullets.enableBody = true;
             this.enemyBullets.physicsType = Phaser.Physics.ARCADE;
+            this.enemyBullets.game.physics.arcade.checkCollision.down = true;
             //Create Player Ship
             this.player = new Player(this.game, this.x, this.y);
             this.player.anchor.setTo(0, 5);
@@ -51,7 +56,7 @@
             this.bulletDelay = 0;
             //Spawn Enemy Ships
             this.game.time.events.loop(Phaser.Timer.SECOND * 4, this.createEnemy4, this);
-
+            this.game.time.events.loop(Phaser.Timer.SECOND * 10, this.createEnemy1, this);
             //Create the label to display the players score
             this.scoreString = "Score: ";
             this.scoreText = this.game.add.text(10, 10, this.scoreString + this.player.playerScore, { font: '34px Impact', fill: '#fff' });
@@ -75,7 +80,8 @@
                 }
                 //Player enemy1 collision checking
                 this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
-                this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
+                this.game.physics.arcade.collide(this.bullets, this.enemies, this.enemyHit, null, this);
+                this.game.physics.arcade.collide(this.player, this.enemyBullets, this.playerHit, null, this);
             } else {
                 //Change the state text when player dies and show
                 this.stateText.text = "Game Over \n Click to restart";
@@ -87,7 +93,14 @@
             }
 
             if (this.enemies.length > 0) {
-                this.enemyFire();
+                this.enemies.forEach(function () {
+                    if (this.game.time.now > this.enemy.fireRate) {
+                        this.enemyBullet = new EnemyBullet(this.game, this.enemy.x, this.enemy.y);
+                        this.enemyBullets.add(this.enemyBullet);
+                        this.add.audio('gunShot', 5, false).play();
+                        this.enemy.fireRate = this.game.time.now + this.enemy.fireRate;
+                    }
+                }, this, true);
             }
 
         }
@@ -120,12 +133,18 @@
             this.player.playerScore += this.enemy.pointValue;
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
-            if (this.player.playerScore > 30000) {
-                this.game.state.start('Level07', false, true, this.player.playerScore, this.player.x, this.player.y);
+            if (this.player.playerScore > 20000) {
+                this.game.state.start('Boss01', false, true, this.player.playerScore, this.player.x, this.player.y);
             }
 
         }
 
+        playerHit(player, enemyBullet) {
+            this.player.play('explode', 10, false, true);
+            this.exhaust.kill();
+            this.player.kill();
+            enemyBullet.kill()
+        }
         //Check to see if player hits enemies
         planeCollision(player, enemies) {
             player.play('explode', 10, false, true);

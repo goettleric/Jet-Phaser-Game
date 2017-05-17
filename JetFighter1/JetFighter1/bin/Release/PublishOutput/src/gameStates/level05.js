@@ -26,6 +26,8 @@ var JetFighter;
             };
             Level05.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.levelString = "Level:";
+                this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "05", { font: '34px Impact', fill: '#fff' });
                 this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
@@ -33,6 +35,7 @@ var JetFighter;
                 this.enemyBullets = this.game.add.group();
                 this.enemyBullets.enableBody = true;
                 this.enemyBullets.physicsType = Phaser.Physics.ARCADE;
+                this.enemyBullets.game.physics.arcade.checkCollision.down = true;
                 this.player = new Client.Player(this.game, this.x, this.y);
                 this.player.anchor.setTo(0, 5);
                 this.player.playerScore = this.overallScore;
@@ -58,8 +61,8 @@ var JetFighter;
                         this.shootBullet();
                     }
                     this.game.physics.arcade.overlap(this.player, this.enemies, this.planeCollision, null, this);
-                    this.game.physics.arcade.overlap(this.bullets, this.enemies, this.enemyHit, null, this);
-                    this.game.physics.arcade.overlap(this.player, this.enemyBullet, this.playerHit, null, this);
+                    this.game.physics.arcade.collide(this.bullets, this.enemies, this.enemyHit, null, this);
+                    this.game.physics.arcade.collide(this.enemyBullets, this.player, this.playerHit, null, this);
                 }
                 else {
                     this.stateText.text = "Game Over \n Click to restart";
@@ -69,20 +72,19 @@ var JetFighter;
                     this.game.input.onTap.addOnce(this.startOver, this);
                 }
                 if (this.enemies.length > 0) {
-                    this.enemyFire();
+                    this.enemies.forEach(function () {
+                        if (this.game.time.now > this.enemy.fireRate) {
+                            this.enemyBullet = new Client.EnemyBullet(this.game, this.enemy.x, this.enemy.y);
+                            this.enemyBullets.add(this.enemyBullet);
+                            this.add.audio('gunShot', 5, false).play();
+                            this.enemy.fireRate = this.game.time.now + this.enemy.fireRate;
+                        }
+                    }, this, true);
                 }
             };
             Level05.prototype.createEnemy4 = function () {
                 this.enemy = new Client.EnemyFighterType4(this.game, this.world.randomX, this.world.y - 40);
                 this.enemies.add(this.enemy);
-            };
-            Level05.prototype.enemyFire = function () {
-                if (this.game.time.now > this.enemy.fireRate) {
-                    this.enemyBullet = new Client.EnemyBullet(this.game, this.enemy.x, this.enemy.y);
-                    this.enemyBullets.add(this.enemyBullet);
-                    this.add.audio('gunShot', 5, false).play();
-                    this.enemy.fireRate = this.game.time.now + this.enemy.fireRate;
-                }
             };
             Level05.prototype.enemyHit = function (bullets, enemies) {
                 enemies.play('blowUp', 9, false, true);
@@ -94,9 +96,10 @@ var JetFighter;
                     this.game.state.start('Level06', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
-            Level05.prototype.playerHit = function (player, enemyBullets) {
-                player.kill();
+            Level05.prototype.playerHit = function (enemyBullets, player) {
+                player.play('explode', 10, false, true);
                 this.exhaust.kill();
+                player.kill();
                 enemyBullets.kill();
             };
             Level05.prototype.planeCollision = function (player, enemies) {

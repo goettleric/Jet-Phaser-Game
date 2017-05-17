@@ -25,6 +25,7 @@ var JetFighter;
                 _this.state.add('Level04', Client.Level04, false);
                 _this.state.add('Level05', Client.Level05, false);
                 _this.state.add('Level06', Client.Level06, false);
+                _this.state.add('Boss01', Client.Boss01, false);
                 _this.state.start('Boot');
                 return _this;
             }

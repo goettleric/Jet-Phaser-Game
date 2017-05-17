@@ -23,6 +23,8 @@ var JetFighter;
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
+                this.levelString = "Level:";
+                this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "1", { font: '34px Impact', fill: '#fff' });
                 this.player = new Client.Player(this.game, this.world.centerX, this.world.centerY * 2.5);
                 this.player.anchor.setTo(0, 5);
                 this.exhaust = new Client.JetFlame(this.game, this.world.centerX, this.world.centerY * 2.5);
@@ -67,7 +69,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore >= 100) {
+                if (this.player.playerScore >= 1000) {
                     this.game.state.start("Level02", true, false, this.player.playerScore, this.player.x, this.player.y);
                 }
             };

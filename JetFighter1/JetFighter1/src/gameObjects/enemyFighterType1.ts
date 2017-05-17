@@ -4,6 +4,7 @@
 
         pointValue: number;
         fireRate: number;
+        fireDelay: number;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'jetfighter', 'enemy1');
@@ -14,12 +15,13 @@
             game.add.existing(this);
             game.physics.enable(this);
             game.physics.arcade.enable(this);
-
             this.body.collideWorldBounds = false;
             this.body.setCircle(20);
 
             //Point Value for the enemy if killed
             this.pointValue = 100;
+            this.fireRate = 2000;
+            this.fireDelay = 0;
         }
 
         update() {

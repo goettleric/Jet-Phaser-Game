@@ -13,6 +13,8 @@
         bulletDelay: number;
         scoreString: string;
         loaderText: Phaser.Text;
+        levelString: string;
+        levelText;
         scoreText;
         stateText;
      
@@ -26,7 +28,9 @@
             this.enemies = this.game.add.group();
             this.enemies.enableBody = true;
             this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
-            
+            //Level header
+            this.levelString = "Level:";
+            this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "1", { font: '34px Impact', fill: '#fff' });
             //Create Player Ship
             this.player = new Player(this.game, this.world.centerX, this.world.centerY * 2.5);
             this.player.anchor.setTo(0, 5);
@@ -93,7 +97,7 @@
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
             //Check the player score to reach level 2
-            if (this.player.playerScore >= 100) {
+            if (this.player.playerScore >= 1000) {
 
                 //Start the level 2 state and pass the player's score to it so it isn't lost.
                 this.game.state.start("Level02", true, false, this.player.playerScore, this.player.x, this.player.y);

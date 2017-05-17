@@ -26,6 +26,7 @@ var JetFighter;
                 _this.body.collideWorldBounds = true;
                 _this.body.setCircle(20);
                 _this.playerScore = 0;
+                _this.missileCount = 0;
                 return _this;
             }
             Player.prototype.update = function () {

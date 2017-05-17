@@ -3,6 +3,8 @@
     export class Level04 extends Level03 {
 
         bulletDelay: number;
+        levelString: string;
+        levelText;
         scoreString: string;
         scoreText;
         stateText;
@@ -23,7 +25,9 @@
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
             //Background seting
-
+            //Level header
+            this.levelString = "Level:";
+            this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString +"04", { font: '34px Impact', fill: '#fff' });
             this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
             //Create Enemy Group
             this.enemies = this.game.add.group();
@@ -105,7 +109,7 @@
             this.player.playerScore += this.enemy.pointValue;
             this.scoreText.text = this.scoreString + this.player.playerScore;
 
-            if (this.player.playerScore > 2000) {
+            if (this.player.playerScore > 10000) {
                 this.game.state.start('Level05', false, true, this.player.playerScore, this.player.x, this.player.y);
             }
 

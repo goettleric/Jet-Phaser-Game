@@ -9,7 +9,5 @@ C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\bin\EntityFramework.SqlSer
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\bin\EntityFramework.xml
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\bin\EntityFramework.SqlServer.xml
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\obj\Release\JetFighter1.csprojResolveAssemblyReference.cache
-C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\obj\Release\JetFighter.Properties.Resources.resources
-C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\obj\Release\JetFighter1.csproj.GenerateResource.Cache
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\obj\Release\JetFighter1.dll
 C:\Users\Eric\Jet-Phaser-Game\JetFighter1\JetFighter1\obj\Release\JetFighter1.pdb

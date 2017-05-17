@@ -4,6 +4,7 @@
 
         pointValue: number;
         fireRate: number;
+        fireDelay: number;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, 'jetfighter', 'enemy3');
@@ -20,6 +21,8 @@
 
             //Point Value for the enemy if killed
             this.pointValue = 500;
+            this.fireRate = 1100;
+            this.fireDelay = 0;
         }
 
         update() {

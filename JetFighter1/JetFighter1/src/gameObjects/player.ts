@@ -4,6 +4,7 @@
 
         playerScore: number;
         playerName: string;
+        missileCount: number;
 
         constructor(game: Phaser.Game, x: number, y: number) {
             //Set the player sprite and anchor point
@@ -21,6 +22,7 @@
             this.body.setCircle(20);
 
             this.playerScore = 0;
+            this.missileCount = 0;
             
         }
 

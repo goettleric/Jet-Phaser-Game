@@ -2,6 +2,7 @@
 
     export class PlayerBullet extends Phaser.Sprite {
 
+        bulletDamage: number;
     
         constructor(game: Phaser.Game, x: number, y: number, damage: number) {
             super(game, x, y, "jetfighter", "playerBullet");
@@ -13,6 +14,7 @@
             game.physics.arcade.enable(this);
             this.body.collideWorldBounds = false;
             this.body.setCircle(5);
+            this.bulletDamage = 100;
         }
 
         update() {

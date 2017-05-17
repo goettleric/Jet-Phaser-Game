@@ -21,6 +21,7 @@ var JetFighter;
                 game.physics.arcade.enable(_this);
                 _this.body.collideWorldBounds = false;
                 _this.body.setCircle(5);
+                _this.bulletDamage = 100;
                 return _this;
             }
             PlayerBullet.prototype.update = function () {

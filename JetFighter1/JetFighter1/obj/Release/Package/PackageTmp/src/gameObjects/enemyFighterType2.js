@@ -24,6 +24,8 @@ var JetFighter;
                 _this.body.collideWorldBounds = false;
                 _this.body.setCircle(20);
                 _this.pointValue = 200;
+                _this.fireRate = 1500;
+                _this.fireDelay = 0;
                 return _this;
             }
             EnemyFighterType2.prototype.update = function () {

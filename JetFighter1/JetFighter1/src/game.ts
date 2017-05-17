@@ -14,6 +14,7 @@
             this.state.add('Level04', Level04, false);
             this.state.add('Level05', Level05, false);
             this.state.add('Level06', Level06, false);
+            this.state.add('Boss01', Boss01, false);
             this.state.start('Boot');
             
         }

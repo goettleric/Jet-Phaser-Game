@@ -4,8 +4,7 @@
 
         constructor(game: Phaser.Game, x: number, y: number) {
             super(game, x, y, "jetfighter", "enemyBullet");
-
-            //Animations
+            
             game.add.existing(this);
             // Physics
             game.physics.enable(this);
