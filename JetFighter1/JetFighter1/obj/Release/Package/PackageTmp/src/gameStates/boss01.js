@@ -137,9 +137,10 @@ var JetFighter;
                 }
             };
             Boss01.prototype.fireMissile = function () {
-                if (this.player.missileCount > 0) {
+                if (this.player.missileCount > 0 && this.game.time.now > this.bulletDelay) {
                     this.missile = new Client.Missile(this.game, this.player.x + 20, this.player.y - 340, 200);
                     this.player.missileCount -= 1;
+                    this.bulletDelay = this.game.time.now + 500;
                 }
             };
             Boss01.prototype.enterName = function () {

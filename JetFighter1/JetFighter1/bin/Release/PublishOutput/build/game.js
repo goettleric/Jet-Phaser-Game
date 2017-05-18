@@ -493,9 +493,10 @@ var JetFighter;
                 }
             };
             Boss01.prototype.fireMissile = function () {
-                if (this.player.missileCount > 0) {
+                if (this.player.missileCount > 0 && this.game.time.now > this.bulletDelay) {
                     this.missile = new Client.Missile(this.game, this.player.x + 20, this.player.y - 340, 200);
                     this.player.missileCount -= 1;
+                    this.bulletDelay = this.game.time.now + 500;
                 }
             };
             Boss01.prototype.enterName = function () {
@@ -588,7 +589,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore >= 1000) {
+                if (this.player.playerScore >= 100) {
                     this.game.state.start("Level02", true, false, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -653,9 +654,9 @@ var JetFighter;
             };
             Level02.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "2", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -704,7 +705,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore > 2000) {
+                if (this.player.playerScore > 500) {
                     this.game.state.start('Level03', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -769,9 +770,9 @@ var JetFighter;
             };
             Level03.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "03", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -820,7 +821,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore > 5000) {
+                if (this.player.playerScore > 800) {
                     this.game.state.start('Level04', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -885,9 +886,9 @@ var JetFighter;
             };
             Level04.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "04", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -946,7 +947,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore > 10000) {
+                if (this.player.playerScore > 2000) {
                     this.game.state.start('Level05', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -1011,9 +1012,9 @@ var JetFighter;
             };
             Level05.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "05", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -1077,7 +1078,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore > 15000) {
+                if (this.player.playerScore > 4000) {
                     this.game.state.start('Level06', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -1148,9 +1149,9 @@ var JetFighter;
             };
             Level06.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "06", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -1227,7 +1228,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore > 20000) {
+                if (this.player.playerScore > 6000) {
                     this.game.state.start('Boss01', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
@@ -1298,9 +1299,9 @@ var JetFighter;
             };
             Level07.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "07", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -1388,7 +1389,7 @@ var JetFighter;
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
                 if (this.player.playerScore > 20000) {
-                    this.game.state.start('Boss01', false, true, this.player.playerScore, this.player.x, this.player.y);
+                    this.game.state.start('Level08', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
             Level07.prototype.playerHit = function (player, enemyBullet) {

@@ -26,9 +26,9 @@ var JetFighter;
             };
             Level07.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
+                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.levelString = "Level:";
                 this.levelText = this.game.add.text(this.game.width - 150, 10, this.levelString + "07", { font: '34px Impact', fill: '#fff' });
-                this.background = this.game.add.tileSprite(0, 0, 1300, 900, 'water');
                 this.enemies = this.game.add.group();
                 this.enemies.enableBody = true;
                 this.enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -116,7 +116,7 @@ var JetFighter;
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
                 if (this.player.playerScore > 20000) {
-                    this.game.state.start('Boss01', false, true, this.player.playerScore, this.player.x, this.player.y);
+                    this.game.state.start('Level08', false, true, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
             Level07.prototype.playerHit = function (player, enemyBullet) {

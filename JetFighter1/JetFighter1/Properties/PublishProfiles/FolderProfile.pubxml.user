@@ -17,7 +17,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/JetFighter1.dll">
-      <publishTime>05/17/2017 13:22:41</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="bin/web.config">
       <publishTime>05/17/2017 13:22:42</publishTime>
@@ -71,94 +71,97 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/10/2017 11:47:49</publishTime>
     </File>
     <File Include="build/game.js">
-      <publishTime>05/17/2017 13:29:38</publishTime>
+      <publishTime>05/17/2017 14:25:30</publishTime>
     </File>
     <File Include="build/game.js.map">
-      <publishTime>05/17/2017 13:29:38</publishTime>
+      <publishTime>05/17/2017 14:25:30</publishTime>
     </File>
     <File Include="build/index.html">
-      <publishTime>05/16/2017 21:29:01</publishTime>
+      <publishTime>05/17/2017 14:33:34</publishTime>
     </File>
     <File Include="build/libs/phaser.min.js">
       <publishTime>04/01/2017 09:20:08</publishTime>
+    </File>
+    <File Include="build/menu.js">
+      <publishTime>05/17/2017 14:30:38</publishTime>
     </File>
     <File Include="build/scores.html">
       <publishTime>05/15/2017 14:17:50</publishTime>
     </File>
     <File Include="build/styles/default.css">
-      <publishTime>05/15/2017 09:34:08</publishTime>
+      <publishTime>05/17/2017 14:28:51</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>05/05/2017 09:43:38</publishTime>
     </File>
     <File Include="src/game.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/Boss.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/enemyBullet.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/enemyFighterType1.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/enemyFighterType2.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/enemyFighterType3.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/enemyFighterType4.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/jetFlame.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/missile.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/player.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameObjects/playerBullet.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/boot.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/boss01.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/gameOver.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/level01.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/level02.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/level03.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/level04.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/level05.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/Level06.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/level07.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/mainMenu.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="src/gameStates/preloader.js">
-      <publishTime>05/17/2017 13:33:11</publishTime>
+      <publishTime>05/17/2017 14:35:16</publishTime>
     </File>
     <File Include="web.config">
       <publishTime>05/17/2017 13:22:42</publishTime>

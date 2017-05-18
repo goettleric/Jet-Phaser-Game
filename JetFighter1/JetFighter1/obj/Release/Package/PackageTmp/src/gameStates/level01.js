@@ -69,7 +69,7 @@ var JetFighter;
                 bullets.kill();
                 this.player.playerScore += this.enemy.pointValue;
                 this.scoreText.text = this.scoreString + this.player.playerScore;
-                if (this.player.playerScore >= 1000) {
+                if (this.player.playerScore >= 100) {
                     this.game.state.start("Level02", true, false, this.player.playerScore, this.player.x, this.player.y);
                 }
             };
